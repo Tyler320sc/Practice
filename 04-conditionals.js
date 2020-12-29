@@ -56,8 +56,8 @@ if (num > 10) {
 // }
 
 // Practice comparing numbers
-const x = 1;
-const y = 1;
+// const x = 1;
+// const y = 1;
 
 // console.log('The bigger number is:');
 /*
@@ -155,8 +155,8 @@ Notice that the wallet is in cents and the price is in dollars, so you'll have t
 13. To simulate authentication, we have a username, a password, and expected values for each. The login is successful if the username and password match the expected values. Otherwise, either the username is wrong or the password is wrong. Print appropriate messages for each of the 3 cases. (Don't worry about the case where the username and password are both wrong; one of the other cases will catch it.)
 */
 // Practice nesting conditionals
-const a = 0;
-const b = 0;
+// const a = 0;
+// const b = 0;
 /*
 14. Print the appropriate message for any of the following cases comparing a and b:
 Matching positive numbers.
@@ -165,21 +165,21 @@ No match of positive numbers.
 No match of negative numbers.
 No match.
 */
-if (a === b && a > -1 && b > -1) {
-  console.log('Matching positive numbers.');
-}
-if (a === b && a < 0 && b < 0) {
-  console.log('Matching negative numbers.');
-}
-if (a !== b && a > -1 && b > -1) {
-  console.log('No match of positive numbers.');
-}
-if (a !== b && a < 0 && b < 0) {
-  console.log('No match of negative numbers.');
-}
-if (a !== b) {
-  console.log('No match.');
-}
+// if (a === b && a > -1 && b > -1) {
+//   console.log('Matching positive numbers.');
+// }
+// if (a === b && a < 0 && b < 0) {
+//   console.log('Matching negative numbers.');
+// }
+// if (a !== b && a > -1 && b > -1) {
+//   console.log('No match of positive numbers.');
+// }
+// if (a !== b && a < 0 && b < 0) {
+//   console.log('No match of negative numbers.');
+// }
+// if (a !== b) {
+//   console.log('No match.');
+// }
 // Practice with more information
 const myUsername = 'Alice';
 const myPassword = '1234';
