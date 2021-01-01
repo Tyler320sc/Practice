@@ -254,8 +254,8 @@ const ceoSalaryMinimum = 110000;
 If you notice you're repeating a certain condition more than once, try nesting if statements to avoid the repeitition.
 */
 // Practice complex conditions
-const creditCard = 22222;
-
+const creditCard = 22220;
+// const creditCard2 = creditCard * 3;
 /*
 16. Print a message saying whether the credit card number is valid or not. A valid credit card in this system must have all of the following properties:
 
@@ -263,8 +263,8 @@ const creditCard = 22222;
 - Tripling it gives an even number
 - It is divisible by either 5 or 7
 */
-// if ((`${creditCard}`.length === 5) && ((creditCard * 3) % 2 === 0) && (creditCard / 5 === 0) || creditCard / 7 === 0) {
-//   console.log('Credit card is valid.');
-// } else {
-//   console.log('Credit card is invalid.');
-// }
+if ((`${creditCard}`.length === 5) && ((creditCard * 3) % 2 === 0) && (creditCard % 5 === 0) || creditCard % 7 === 0) {
+  console.log('Credit card is valid.');
+} else {
+  console.log('Credit card is invalid.');
+}
