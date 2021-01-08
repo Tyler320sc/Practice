@@ -1,23 +1,23 @@
 // Practice calling a function with no arguments
 
 /*
-5.1 Call the following function.
-*/
-// const sayHello = () => {
-//   console.log('Hello, world!');
-// };
-// sayHello();
+// 5.1 Call the following function.
+// */
+const sayHello = () => {
+  console.log('Hello, world!');
+};
+sayHello();
 
 
 /*
 5.11 Call the following function.
 */
-// const sayHelloLonger = () => {
-//   console.log('Hello!');
-//   console.log('Bonjour!');
-//   console.log('Guten Tag!');
-// };
-// sayHelloLonger();
+const sayHelloLonger = () => {
+  console.log('Hello!');
+  console.log('Bonjour!');
+  console.log('Guten Tag!');
+};
+sayHelloLonger();
 
 
 // Practice creating a function with no arguments
@@ -25,28 +25,28 @@
 /*
 5.2 Create a function so the following line of code prints the message 'Welcome!'
 */
-// const sayWelcome = () => {
-//   console.log('Welcome!');
-// }
-// sayWelcome();
+const sayWelcome = () => {
+  console.log('Welcome!');
+}
+sayWelcome();
 
 // Practice calling a function with one argument
 
 /*
 5.3 Call the following function, providing a language as the argument.
 */
-// const sayHelloLanguage = language => {
-//   if (language === 'English') {
-//     console.log('Hello!');
-//   } else if (language === 'French') {
-//     console.log('Bonjour!');
-//   } else if (language === 'German') {
-//     console.log('Guten Tag!');
-//   } else {
-//     console.log('Unknown language');
-//   }
-// };
-// sayHelloLanguage('French');
+const sayHelloLanguage = language => {
+  if (language === 'English') {
+    console.log('Hello!');
+  } else if (language === 'French') {
+    console.log('Bonjour!');
+  } else if (language === 'German') {
+    console.log('Guten Tag!');
+  } else {
+    console.log('Unknown language');
+  }
+};
+sayHelloLanguage('French');
 
 
 // Practice creating a function with one argument
@@ -54,74 +54,86 @@
 /*
 5.4 Create a function called 'greet' that takes a name as an argument. Call the function a few times to achieve the same goal as the following lines of code.
 */
-// const greet = name => {
-//   return `Hello, ${name}!`;
-// }
-// console.log(greet('Alice'));
-// console.log(greet('Bob'));
-// console.log(greet('Carol'));
-// console.log(greet('Dean'));
-// console.log('Hello, Alice!');
-// console.log('Hello, Bob!');
-// console.log('Hello, Carol!');
-// console.log('Hello, Dean!');
+const greet = name => {
+  return `Hello, ${name}!`;
+}
+console.log(greet('Alice'));
+console.log(greet('Bob'));
+console.log(greet('Carol'));
+console.log(greet('Dean'));
+console.log('Hello, Alice!');
+console.log('Hello, Bob!');
+console.log('Hello, Carol!');
+console.log('Hello, Dean!');
 /*
 5.41 Create a function called 'isPositive' that takes a number as an argument and returns true if the number is positive (greater than 0), otherwise false.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-// const isPositive = num => {
-//   if (num > 0) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// console.log('10 is positive:', isPositive(10) === true);
-// console.log('-10 is not positive:', isPositive(-10) === false);
+const isPositive = num => {
+  if (num > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log('10 is positive:', isPositive(10) === true);
+console.log('-10 is not positive:', isPositive(-10) === false);
 
 /*
 5.411 Create a function called 'isNegative' that takes a number as an argument and returns true if the number is negative (less than 0), otherwise false.
 
 The following lines should help test if your function works correctly.
 */
-// const isNegative = num => {
-//   if (num < 0) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// console.log('10 is not negative:', isNegative(10) === false);
-// console.log('-10 is negative:', isNegative(-10) === true);
+const isNegative = num => {
+  if (num < 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const isNegative2 = num => {
+  return num < 0;
+} 
+console.log('10 is not negative:', isNegative(10) === false);
+console.log('-10 is negative:', isNegative(-10) === true);
 
 /*
 5.42 Create a function called 'isEven' that takes a number as an argument and returns true if the number is even, otherwise false.
 
 Write some lines of code to test if your function works correctly.
 */
-// const isEven = num => {
-//   if (num % 2 === 0) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// console.log('10 is even:', isEven(10) === true);
-// console.log('1 is odd:', isEven(1) === false);
+const isEven = num => {
+  if (num % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const isEven2 = num => {
+  return num % 2 === 0;
+}
+console.log('10 is even:', isEven2(10) === true);
+console.log('1 is odd:', isEven2(1) === false);
 
 /*
 5.421 Create a function called 'isOdd' similar to isEven. Can you use isEven to make this function?
 */
-// const isOdd = num => {
-//   if (num % 2 !== 0) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// console.log('1 is odd:', isOdd(1) === true);
-// console.log('10 is even:', isOdd(10) === false);
+const isOdd = num => {
+  if (num % 2 !== 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const isOdd2 = num => {
+  return !isEven(num); 
+}
+console.log('1 is odd:', isOdd(1) === true);
+console.log('10 is even:', isOdd(10) === false);
 
 
 /*
@@ -136,37 +148,50 @@ const creditCard = 22220;
 - Tripling it gives an even number
 - It is divisible by either 5 or 7
 */
-// const isValidCreditCard = cardNum => {
-//   if ((`${cardNum}`.length === 5) && ((cardNum * 3) % 2 === 0) && (cardNum % 5 === 0) || cardNum % 7 === 0) {
-//     console.log('Credit card is valid.');
-//   } else {
-//     console.log('Credit card is invalid.');
-//   }
-// }
-// isValidCreditCard(creditCard);
-
+const isValidCreditCard = cardNum => {
+  if ((`${cardNum}`.length === 5) && ((cardNum * 3) % 2 === 0) && (cardNum % 5 === 0) || cardNum % 7 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+isValidCreditCard(creditCard);
+ 
+console.log('credit card number 22220 is valid:', isValidCreditCard(22220) === true);
+console.log('credit card number 22221 is invalid:', isValidCreditCard(22221) === false);
+console.log('credit card number 22240 is valid:', isValidCreditCard(22240) === true);
+console.log('credit card number 2222 is invalid:', isValidCreditCard(2222) === false);
 /*
 5.44 Create a function called 'dollarsToCents' that takes a value in dollars and returns the corresponding value in cents.
 */
 
-
-
+const dollarsToCents = dollar => {
+  return dollar * 100;
+}
+console.log('1.25 dollars === 125 cents:', dollarsToCents(1.25) === 125);
 /*
 5.45 Create a function called 'fToC' that takes a temperature in Fahrenheit and returns the temperature in Celsius.
 */
-
-
-
+// To convert temperatures in degrees Fahrenheit to Celsius, subtract 32 and multiply by . 5556 (or 5/9).
+const fToC = tempInFahrenheit => {
+  return (tempInFahrenheit - 32) * 5/9;
+}
+console.log('28 degrees Fahrenheit === -2.22 degrees Celsius:', fToC(28) === -2.2222222222222223);
+console.log('40 degrees Fahrenheit === 4.45 degrees Celsius:', fToC(40) === 4.444444444444445);
 /*
 5.451 Create a function called 'cToF' that takes a temperature in Celsius and returns the temperature in Fahrenheit.
 */
+// convert celsius to fahrenheit (0°C × 9/5) + 32 = 32°F :) DUH!!!
 
-
-
+const cToF = tempInCelsius => {
+  return tempInCelsius * 9/5 + 32;
+}
+console.log('-2.22 degrees Celsius === 28 degrees Fahrenheit:', cToF(-2.2222222222222223) === 28);
+console.log('4.45 degrees Celsius === 40 degrees Fahrenheit:', cToF(4.444444444444445) === 40);
 // Practice calling a function with multiple arguments
 
 /*
-5.5 Call the following function, providing a name and a language.
+5.5 Call the following function, providing a name and a language
 */
 const greetLanguage = (name, language) => {
   if (language === 'English') {
@@ -179,4 +204,52 @@ const greetLanguage = (name, language) => {
     console.log('Unknown language');
   }
 };
+console.log(greetLanguage('Ty', 'German'));
+console.log(greetLanguage('Tim', 'French'));
+console.log(greetLanguage('Tiffany', 'Mandarin'));
+/*
+5.51 Write some lines of code to test if the following function multiplies 3 numbers together correctly.
+*/
+const multiplyAll = (a, b, c) => {
+  return a * b * c;
+};
+console.log('1 * 2 * 3 === 6:', multiplyAll(1, 2, 3) === 6);
+console.log('12 * 3 * 3 === 108:', multiplyAll(12, 3, 3) === 108);
 
+// Practice creating a function with multiple arguments
+/*
+5.6 Create a function called 'languageGreeting' that takes a name and a language and returns a greeting instead of printing it.
+The following lines should help test if your function works correctly. They should print true.
+*/
+// console.log('English greeting works:', languageGreeting('Alice', 'English') === 'Hello, Alice!');
+// console.log('French greeting works:', languageGreeting('Alice', 'French') === 'Bonjour, Alice!');
+// console.log('German greeting works:', languageGreeting('Alice', 'German') === 'Guten Tag, Alice!');
+// console.log('Unknown language works:', languageGreeting('Alice', 'gibberish') === 'Unknown language');
+/*
+5.61 Create a function called 'lovers' that takes two names and returns a string that the first name loves the second name.
+The following lines should help test if your function works correctly. They should print true.
+*/
+console.log('Alice loves Bob:', lovers('Alice', 'Bob') === 'Alice loves Bob');
+console.log('Bob loves Alice:', lovers('Bob', 'Alice') === 'Bob loves Alice');
+/*
+5.62 Create a function called 'convertTemperature' that takes a number and either 'FtoC' or 'CtoF', and returns the converted temperature. How can you use the functions from 5.45 and 5.451 to make this easier?
+The following lines should help test if your function works correctly. They should print true.
+*/
+console.log('32 F = 0 C:', convertTemperature(32, 'FtoC') === 0);
+console.log('0 C = 32 F:', convertTemperature(0, 'CtoF') === 32);
+/*
+5.63 Create a function called 'divisibleBy' that takes two numbers and returns true if the first number is divisible by the second, otherwise false.
+The following lines should help test if your function works correctly. They should print true.
+*/
+console.log('5 is not divisible by 3:', divisibleBy(5, 3) === false);
+console.log('1 is divisible by 1:', divisibleBy(1, 1) === true);
+console.log('6 is divisible by 2:', divisibleBy(6, 2) === true);
+console.log('6 is divisible by 3:', divisibleBy(6, 3) === true);
+/*
+5.64 Create a function called 'bonusTime' that takes a salary (number) and a boolean. If the second argument is true, return the salary multiplied by 10, otherwise the original salary.
+Write some lines of code to test if your function works correctly.
+*/
+/*
+5.65 Create a function called 'rps' for playing the game Rock, Paper, Scissors. It should take two arguments, which should each be either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, return 1. If the first hand loses, return -1. In the case of a draw, return 0.
+Write some lines of code to test if your function works correctly.
+*/
