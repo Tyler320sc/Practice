@@ -221,10 +221,22 @@ console.log('12 * 3 * 3 === 108:', multiplyAll(12, 3, 3) === 108);
 5.6 Create a function called 'languageGreeting' that takes a name and a language and returns a greeting instead of printing it.
 The following lines should help test if your function works correctly. They should print true.
 */
-// console.log('English greeting works:', languageGreeting('Alice', 'English') === 'Hello, Alice!');
-// console.log('French greeting works:', languageGreeting('Alice', 'French') === 'Bonjour, Alice!');
-// console.log('German greeting works:', languageGreeting('Alice', 'German') === 'Guten Tag, Alice!');
-// console.log('Unknown language works:', languageGreeting('Alice', 'gibberish') === 'Unknown language');
+const languageGreeting = (name, language) => {
+  if (language === 'English') {
+    return 'Hello, ' + name + '!';
+  } else if (language === 'French') {
+    return 'Bonjour, ' + name + '!';
+  } else if (language === 'German') {
+    return 'Guten Tag, ' + name + '!';
+  } else {
+    return 'Unkown language';
+  }
+}
+console.log('English greeting works:', languageGreeting('Alice', 'English') === 'Hello, Alice!');
+console.log('French greeting works:', languageGreeting('Alice', 'French') === 'Bonjour, Alice!');
+console.log('German greeting works:', languageGreeting('Alice', 'German') === 'Guten Tag, Alice!');
+console.log('Unknown language works:', languageGreeting('Alice', 'gibberish') === 'Unknown language');
+
 /*
 5.61 Create a function called 'lovers' that takes two names and returns a string that the first name loves the second name.
 The following lines should help test if your function works correctly. They should print true.
