@@ -204,9 +204,11 @@ const greetLanguage = (name, language) => {
     console.log('Unknown language');
   }
 };
-console.log(greetLanguage('Ty', 'German'));
-console.log(greetLanguage('Tim', 'French'));
-console.log(greetLanguage('Tiffany', 'Mandarin'));
+greetLanguage('Ty', 'German');
+greetLanguage('Tim', 'French');
+greetLanguage('Tiffany', 'Mandarin');
+// We cant test console.log because theres no return value
+// console.log('Name is Ty and greeting is Hello:', greetLanguage('Ty', 'English') === 'Hello, Ty!');
 /*
 5.51 Write some lines of code to test if the following function multiplies 3 numbers together correctly.
 */
@@ -241,18 +243,30 @@ console.log('Unknown language works:', languageGreeting('Alice', 'gibberish') ==
 5.61 Create a function called 'lovers' that takes two names and returns a string that the first name loves the second name.
 The following lines should help test if your function works correctly. They should print true.
 */
+const lovers = (firstName, secondName) => {
+  return `${firstName} loves ${secondName}`;
+}
 console.log('Alice loves Bob:', lovers('Alice', 'Bob') === 'Alice loves Bob');
 console.log('Bob loves Alice:', lovers('Bob', 'Alice') === 'Bob loves Alice');
 /*
 5.62 Create a function called 'convertTemperature' that takes a number and either 'FtoC' or 'CtoF', and returns the converted temperature. How can you use the functions from 5.45 and 5.451 to make this easier?
 The following lines should help test if your function works correctly. They should print true.
 */
+const convertTemperature = (temp, kindOfTemp) => {
+  if (kindOfTemp === 'FtoC') {
+    return fToC(temp);
+  } else {
+    return cToF(temp);
+  }
+}
 console.log('32 F = 0 C:', convertTemperature(32, 'FtoC') === 0);
 console.log('0 C = 32 F:', convertTemperature(0, 'CtoF') === 32);
 /*
 5.63 Create a function called 'divisibleBy' that takes two numbers and returns true if the first number is divisible by the second, otherwise false.
 The following lines should help test if your function works correctly. They should print true.
 */
+const divisibleBy = (num, num2) => num % num2 === 0;
+
 console.log('5 is not divisible by 3:', divisibleBy(5, 3) === false);
 console.log('1 is divisible by 1:', divisibleBy(1, 1) === true);
 console.log('6 is divisible by 2:', divisibleBy(6, 2) === true);
@@ -261,7 +275,30 @@ console.log('6 is divisible by 3:', divisibleBy(6, 3) === true);
 5.64 Create a function called 'bonusTime' that takes a salary (number) and a boolean. If the second argument is true, return the salary multiplied by 10, otherwise the original salary.
 Write some lines of code to test if your function works correctly.
 */
+const bonusTime = (salary, bool) => {
+    if (bool) {
+      return salary * 10;
+    }
+    return salary;
+  }
+console.log('bool === true:', bonusTime(3, true) === 30);
+console.log('bool !== true:', bonusTime(3, false) === 3);
 /*
 5.65 Create a function called 'rps' for playing the game Rock, Paper, Scissors. It should take two arguments, which should each be either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, return 1. If the first hand loses, return -1. In the case of a draw, return 0.
 Write some lines of code to test if your function works correctly.
 */
+const rps = (firstHand, secondHand) => {
+  if (firstHand === 'paper' && secondHand === 'scissors') {
+    return -1;
+  } else if (firstHand === 'paper' && secondHand === 'rock') {
+    return 1;
+  } else if (firstHand === 'rock' && secondHand === 'scissors') {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+console.log('scissors beats paper:', rps('paper', 'scissors') === -1);
+console.log('paper beats rock:', rps('paper', 'rock') === 1);
+console.log('rock beats scissors:', rps('rock', 'scissors') === 1);
+console.log('rock === rock is a draw:', rps('rock', 'rock') === 0);
