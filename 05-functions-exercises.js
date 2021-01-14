@@ -298,7 +298,8 @@ const rps = (firstHand, secondHand) => {
     return 0;
   }
 }
-console.log('scissors beats paper:', rps('paper', 'scissors') === -1);
+console.log('paper looses to scissors:', rps('paper', 'scissors') === -1);
 console.log('paper beats rock:', rps('paper', 'rock') === 1);
 console.log('rock beats scissors:', rps('rock', 'scissors') === 1);
 console.log('rock === rock is a draw:', rps('rock', 'rock') === 0);
+console.log('scissors beats paper:', rps('scissors', 'paper') === 1);
