@@ -21,10 +21,12 @@ console.log(alphabet[25]);
 6.12 Create a function called 'numLetter' that takes a number, n, and returns the nth letter of the alphabet. If n is 3, it should return the third letter, 'c'.
 Remember to write some lines of code to test if your function works correctly.
 */
-const numLetter = n => alphabet[n];
-console.log('char at Index 2 is c:', numLetter(2) === 'c');
-console.log('char at Index 25 is z:', numLetter(alphabet.length -1) === 'z');
-console.log('char at Index O is a:' , numLetter(0) === 'a');
+
+const numLetter = n => alphabet[n - 1];
+console.log('char at position 3 is c:', numLetter(3) === 'c');
+console.log('char at postion 26 is z:', numLetter(26) === 'z');
+console.log('char at position 1 is a:' , numLetter(1) === 'a');
+console.log(numLetter(3));
 /*
 6.13 Create a function called 'isAtIndex' that takes a string, a letter, and a number. It should return true if the letter is found at the index number of the string, otherwise false.
 The following lines should help test if your function works correctly. They should print true.
@@ -39,12 +41,12 @@ console.log('e is at index 4 in Alice:', isAtIndex('Alice', 'e', 4));
 /*
 6.2 Print the length of the alphabet string.
 */
-console.log(alphabet.length -1);
+console.log(alphabet.length);
 
 /*
 6.21 Print the last letter of the alphabet string, using the length property.
 */
-console.log();
+console.log(alphabet[alphabet.length -1]);
 
 /*
 6.22 Try to guess the length of the string c, then print it to see if you got it right.
@@ -52,7 +54,7 @@ console.log();
 const a = 'alpha';
 const b = 'bet';
 const c = a + b;
-
+console.log(c.length);
 
 
 // Practice using methods
@@ -64,12 +66,14 @@ Use the includes() method.
 
 The following lines should help test if your function works correctly. They should print true.
 */
+const inAlphabet = str => {
+  return alphabet.includes(str.toLowerCase());
+}
 
-
-// console.log('a is in the alphabet:', inAlphabet('a') === true);
-// console.log('lmno is in the alphabet:', inAlphabet('lmno') === true);
-// console.log('1 is not in the alphabet:', inAlphabet('1') === false);
-
+console.log('a is in the alphabet:', inAlphabet('a') === true);
+console.log('lmno is in the alphabet:', inAlphabet('lmno') === true);
+console.log('1 is not in the alphabet:', inAlphabet('1') === false);
+console.log('A is in the alphabet:', inAlphabet('A') === true);
 /*
 6.301 Create a function called 'isDigit' that takes a digit as a string and returns true if it is included in the following string, otherwise false.
 
@@ -77,11 +81,12 @@ The following lines should help test if your function works correctly. They shou
 */
 const digits = '1234567890';
 
-
-
-// console.log('1 is a digit:', isDigit('1') === true);
-// console.log('9 is a digit:', isDigit('9') === true);
-// console.log('a is not a digit:', isDigit('a') === false);
+const isDigit = strDigit => {
+  return digits.includes(strDigit);
+}
+console.log('1 is a digit:', isDigit('1') === true);
+console.log('9 is a digit:', isDigit('9') === true);
+console.log('a is not a digit:', isDigit('a') === false);
 
 /*
 6.302 Create a function called 'isInTrouble' that takes a name and returns true if it is included in the email text.
@@ -92,13 +97,23 @@ As you know, last quarter was suboptimal. We did not meet the expected revenue a
 
 If your name was not stated, continue work as usual. Sincerely, PHB.`;
 
+const isInTrouble = name => {
+  return email.includes(name);
+}
 
-
+console.log('Dilbet is in trouble:', isInTrouble('Dilbert') === true);
+console.log('Asok is in trouble:', isInTrouble('Asok') === true);
+console.log('Tyler is not in trouble:', isInTrouble('Tyler') === false);
 /*
 6.303 Create a function called 'badLanguage' that takes a message and returns true if it contains any bad language, otherwise false. The bad language phrases are: butt face, poopy head, and snot brain.
 */
+const badLanguage = message => message.includes('butt face') || message.includes('poopy head') || message.includes('snot brain');
 
-
+console.log('bad language test');
+console.log(badLanguage('butt face') === true);
+console.log(badLanguage('Sally was being a butt face to me today') === true);
+console.log(badLanguage('Your a poopy head!') === true);
+console.log(badLanguage('what a crap head!') === false);
 /*
 6.31 Create a function called 'IsBasicQuestion' that takes a sentence and returns true if it a basic question, otherwise false. A basic question begins with one of the five Ws (Who, What, When, Where, Why) and ends with a question mark.
 */
