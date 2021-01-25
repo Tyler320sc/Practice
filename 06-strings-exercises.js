@@ -115,10 +115,18 @@ console.log(badLanguage('Sally was being a butt face to me today') === true);
 console.log(badLanguage('Your a poopy head!') === true);
 console.log(badLanguage('what a crap head!') === false);
 /*
-6.31 Create a function called 'IsBasicQuestion' that takes a sentence and returns true if it a basic question, otherwise false. A basic question begins with one of the five Ws (Who, What, When, Where, Why) and ends with a question mark.
+6.31 Create a function called 'IsBasicQuestion' that takes a sentence and returns true if it is a basic question, otherwise false. A basic question begins with one of the five Ws (Who, What, When, Where, Why) and ends with a question mark.
 */
-
-
+const isBasicQuestion = q => {
+  if ( (q.startsWith('Who') || q.startsWith('What') || q.startsWith('When') || q.startsWith('Where') || q.startsWith('Why')) && q.endsWith('?') ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isBasicQuestion('Who is your Daddy?') === true);
+console.log(isBasicQuestion('Where is your Daddy?') === true);
+console.log(isBasicQuestion('Where is your Daddy') === false);
 /*
 6.32 Create a function called 'validURL' that takes a string and returns true if it is a valid URL, otherwise false. For our sake, a valid URL must start with either "http://" or "https://" and end with any of: ".com", ".ca", or ".org".
 */
