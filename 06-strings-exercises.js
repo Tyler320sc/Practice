@@ -23,6 +23,7 @@ Remember to write some lines of code to test if your function works correctly.
 */
 
 const numLetter = n => alphabet[n - 1];
+
 console.log('char at position 3 is c:', numLetter(3) === 'c');
 console.log('char at postion 26 is z:', numLetter(26) === 'z');
 console.log('char at position 1 is a:' , numLetter(1) === 'a');
@@ -130,42 +131,93 @@ console.log(isBasicQuestion('Where is your Daddy') === false);
 /*
 6.32 Create a function called 'validURL' that takes a string and returns true if it is a valid URL, otherwise false. For our sake, a valid URL must start with either "http://" or "https://" and end with any of: ".com", ".ca", or ".org".
 */
-
-
+const validURL = str => {
+  return ( (str.startsWith("http://") || str.startsWith("https://") )
+   && 
+   (str.endsWith(".com") || str.endsWith(".ca") || str.endsWith(".org")));
+}
+console.log('validURL Test')
+console.log(validURL("http://TylerIsAwesome!.com") === true);
+console.log(validURL("https://TylerIsDaMan!.ca") === true);
+console.log(validURL("https://TylerIsDaBest!.org") === true);
+console.log(validURL("http://TylerIsDaBestEver!.org") === true);
+console.log(validURL("http://TylerIsDaBestEver!.caorg") === false);
+console.log(validURL("httpss://TylerIsDaBestEver!.org") === false);
 /*
 6.33 Create a function called 'firstSpace' that takes a string and returns the index of its first space character.
 */
+const firstSpace = str => str.indexOf(' ');
 
-
+console.log(firstSpace(' Tyler') === 0);
+console.log(firstSpace('Tyler is the dopest!') === 5);
+console.log(firstSpace('Ty') !== 0); 
+console.log(firstSpace('Ty ') !== 1); 
+console.log(firstSpace('Ty') === -1); 
 /*
 6.331 Create a function called 'firstOfLast' that takes a full name (e.g. "John Smith") and returns the first letter of the last name (e.g. "S"). How can you use the firstSpace() function to make this easier?
 */
-
-
+const firstOfLast = str => {
+  const space = firstSpace(str);
+  const nextChar = space + 1;
+  return str[nextChar];
+}
+console.log(firstOfLast('John Smith') === 'S');
+console.log(firstOfLast('Tim Johns') === 'J');
 /*
 6.332 Create a function called 'initials' that takes a full name (e.g. "Jane Doe") and returns the initials (e.g. "J.D."). How can you use firstOfLast() to make this easier?
 */
-
-
+const initials = str => {
+  const firstInitial = str[0];
+  const secondInitial = firstOfLast(str);
+  return firstInitial + '.' + secondInitial + '.';
+}
+console.log('initials---------------------------------------------------------------------------');
+console.log(initials('Jane Doe') === 'J.D.');
 /*
 6.34 Create a function called 'capitalize' that takes a word (e.g. "hello") and returns the same word, but with the first letter capitalized (e.g. "Hello").
 */
-
-
+const capitalize = w => w[0].toUpperCase() + w.slice(1);
+console.log('capitalize--------------------------------------------------------------------------');
+console.log(capitalize('tyler') === 'Tyler');
+console.log(capitalize('the') === 'The');
 /*
-6.35 Create a function called 'rhetorical' that takes a rhetorical question and returns the same question, but ending with a period instead of a question mark.
+6.35 Create a function called 'rhetorical' that takes a rhetorical question and returns the same question, but ending with a period instead of a question mark. Don't use the replace method.
 */
-
-
+const rhetorical = q => {
+  let replace = q[q.length -1];
+  replace = '.';
+  let newStr = q.slice(0, -1);
+  return newStr + replace;
+}
+console.log('rhetorical----------------------------------------------------------------------------');
+console.log(rhetorical('What am I doing here?') === 'What am I doing here.');
+console.log(rhetorical('Is rain wet?') === 'Is rain wet.');
+console.log(rhetorical('Does a bear poop in the woods?') === 'Does a bear poop in the woods.');
 /*
 6.36 Create a function called 'couldBeWord' that takes a made up word and returns true if it could be a word, otherwise false. Only made up words containing at least one vowel (a, e, i, o, u) could be words.
 */
+const couldBeWord = w => (w.includes('a') || w.includes('e') || w.includes('i') || w.includes('o') || w.includes('u'));
 
-
+console.log('couldBeWord-------------------------------------------------------------------------');
+console.log(couldBeWord('Hello') === true);
+console.log(couldBeWord('Yeah') === true);
+console.log(couldBeWord('Hello') === true);
+console.log(couldBeWord('Psst') === false);
+console.log(couldBeWord('nth') === false);
+console.log(couldBeWord('TV') === false);
 /*
 6.37 Create a function called 'fixSentence' that takes a sentence and returns the fixed version. The first letter should be capitalized and a period should be added if the original does not end with punctuation (period, question mark, or exclamation mark).
 */
-
+const fixSentence = s => {
+  const firstLetter = capitalize(s[0]);
+  if (s[s.length - 1] !== '.' || s[s.length - 1] !== '?' || s[s.length - 1] !== '!') {
+    var newPunctuation = s + '.';
+  }
+  return firstLetter + newPunctuation;
+}
+console.log('fixSentence-------------------------------------------------------------------------');
+console.log(fixSentence('what does life even mean?') === 'What does life even mean?');
+console.log(fixSentence('fix the sentence') === 'Fix the sentence.');
 
 /*
 6.38 Create a function called 'alternating' that takes a number and returns an alternating string of that many 1s and 0s.
