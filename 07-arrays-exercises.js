@@ -9,22 +9,23 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 /*
 7.1 Create a variable to hold an array of numbers and print it.
 */
-
+const arrOfNums = [1, 2, 3, 4, 5];
+console.log(arrOfNums);
 
 /*
 7.11 Print an array of your top 3 favorite colors (as strings) without creating a variable.
 */
-
+console.log(['green', 'royalblue', 'aquamarine']);
 
 /*
 7.12 Print an array of 4 different types of values.
 */
-
+console.log([true, 1, 'Hello, world!', undefined]);
 
 /*
 7.13 Print a 2-dimensional array of numbers.
 */
-
+console.log([1, 2, 3, [4, 5, 6, 7]]);
 
 // Practice using array index
 
@@ -33,36 +34,43 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 */
 const names = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve', 'Frank'];
 
-
+console.log(names[3]);
 
 /*
 7.21 Print the last name of the array, without using the length property.
 */
-
+console.log(names[5]);
 
 /*
 7.22 Print each of the names at even indexes of the array.
 */
-
-
+console.log(names[0]);
+console.log(names[2]);
+console.log(names[4]);
 /*
 7.23 Create a function called 'head' that takes an array and returns its first element. What does it return when given an empty array?
 
 Remember to write tests!
 */
+const head = arr => arr[0];
 
-
+console.log('head===================================================================================');
+console.log(head([1, 2, 3, 4, 10, 25, 2000]) === 1);
+console.log(head(['Ty', 'Kris', 'Joe', 'Liv', 'May-May', ['Champion']]) === 'Ty');
+console.log(head([true, false, undefined, null, 0, '', NaN, !true, !!false]) === true);
+console.log(head([]) === undefined);
 /*
 7.24 Create a function called 'isAtIndex' that takes an array, a value, and a number. It should return true if the value is found at the index number of the array, otherwise false.
 
 The following lines should help test if your function works correctly. They should print true.
 */
+const isAtIndex = (arr, value, number) => arr.includes(value)[number];
 
-
-// console.log('Bob is at index 1 in names:', isAtIndex(names, 'Bob', 1));
-// console.log('Bob is not at index 0 in names:', !isAtIndex(names, 'Bob', 0));
-// console.log('3 is at index 0 in these numbers:', isAtIndex([3, 2, 1], 3, 0));
-// console.log('2 is not at index 2 in these numbers:', !isAtIndex([3, 2, 1], 2, 2));
+console.log('isAtIndex=============================================================================');
+console.log('Bob is at index 1 in names:', isAtIndex(names, 'Bob', 1));
+console.log('Bob is not at index 0 in names:', !isAtIndex(names, 'Bob', 0));
+console.log('3 is at index 0 in these numbers:', isAtIndex([3, 2, 1], 3, 0));
+console.log('2 is not at index 2 in these numbers:', !isAtIndex([3, 2, 1], 2, 2));
 
 /*
 7.25 Create a function called 'area' that takes a rectangle and returns its area. The rectangle is represented by an array with 2 numbers: [length, width].
@@ -83,6 +91,10 @@ The following lines should help test if your function works correctly. They shou
 
 
 /*
+======================================================================================================
+                                  This should be completed by Monday                                  
+                                  ==================================
+                                       =========================
 7.252 Create a function called 'volumeDifference' that takes two cuboids and returns the difference between the volumes of the cuboids. Each cuboid is represented by an array with 3 numbers: [length, width, height]. The volume of a cuboid can be calculated by multiplying length x width x height.
 */
 
