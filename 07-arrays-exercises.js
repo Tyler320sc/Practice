@@ -161,8 +161,31 @@ The card suits are strings: clubs, diamonds, hearts, spades.
 
 For example, given the two cards [3, 'spades'] and [4, 'hearts'], the second one is the higher card. Given the two cards [11, 'spades'] and [11, 'hearts'], the first one is the higher card (because the Jack of Spades beats the Jack of Hearts).
 */
+const highCard = (card1, card2) => {
 
+  if (card1[0] > card2[0]) {
+    return card1;
+  } else if (card2[0] > card1[0]) {
+    return card2;
+  } else {
+    const s1 = suitValue(card1[1]);  
+    const s2 = suitValue(card2[1]);
 
+    if (s1 > s2) {
+      return card1;
+    } else {
+      return card2;
+    }                        
+  }
+}
+console.log('highCard=============================================================================');
+const highCardTest1 = highCard([2, 'clubs'], [4, 'diamonds']);
+
+console.log(highCardTest1[0] === 4 && highCardTest1[1] === 'diamonds');
+
+const highCardTest2 = highCard([3, 'spades'], [3, 'clubs']);
+
+console.log(highCardTest2[0] === 3 && highCardTest2[1] === 'spades');
 /*
 7.27 Print the number 8 from the following 2D array.
 */
@@ -171,10 +194,235 @@ const matrix1 = [
   [5, 6, 7, 8],
   [9, 10, 11, 12]
 ];
-console.log('matrix=================================================================================');
+console.log('matrix1=================================================================================');
 console.log(matrix1[1][3]);
+
 
 
 /*
 7.271 Create a function called 'valueInMatrix' that takes 4 arguments: matrix, number, row, column. It should return true if the number is found at the specified row and column in the 2D array matrix, otherwise false. For example, the number 10 is found at row 3, column 2 in the previous matrix.
 */
+// const valueInMatrix = (matrix, number, row, column) => {
+//   if (matrix[row][column] === number) {
+//     console.log(matrix);
+//     console.log(row);
+//     console.log(column);
+//     console.log(number);
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// console.log('valueInMatrix==========================================================================');
+// console.log(valueInMatrix(matrix1[2][1]) === 10);
+
+// Practice using length
+
+/*
+7.3 Print the length of the names array.
+*/
+console.log(names.length);
+
+/*
+7.31 Print the last name in the array, using the length property.
+*/
+console.log(names[names.length - 1]);
+
+/*
+7.32 Print the sum of the lengths of the following arrays.
+*/
+const groceries = ['rice', 'bananas', 'avocados', 'blueberries', 'spinach', 'chickpeas', 'canned beans'];
+const officeSupplies = ['pen', 'paper', 'tape', 'stapler'];
+
+console.log(groceries.length + officeSupplies.length);
+
+/*
+7.33 Print the length of the first row in the following 2D array.
+*/
+const matrix2 = [
+  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
+  ['i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'],
+  ['q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+];
+console.log(matrix2[0].length);
+
+
+/*
+7.34 Create a function called 'last' that takes an array and returns its last element.
+*/
+ const last = arr => arr[arr.length - 1];
+
+ console.log(last(['', 2]) === 2);
+ console.log(last(names) === 'Frank');
+ console.log(last([undefined]) === undefined);
+/*
+7.35 Print the length of the last row in the following 2D array.
+*/
+const bigMatrix = [[45,39,89,67,7,71,85,44,47,39],[89,32,81,19,43,17,47,10,6,58],[8,59,79,3,14,21,83,18,27,49],[24,32,72,3,22,32,5,69,15,61],[64,31,73,28,5,98,6,29,90,4],[54,6,92,92,56,84,81,7,53,62],[6,33,41,77,23,3,46,19,57,40],[3,79,65,30,79,54,25,53,35,71],[60,1,54,49,44,61,42,50,18,43],[91,46,7,50,95,14,45,4,98,22]];
+console.log(bigMatrix[9].length);
+
+
+/*
+7.36 Create a function called 'isEmpty' that takes an array and returns true if it is empty, otherwise false.
+*/
+const isEmpty = arr => arr.length === 0;
+
+console.log(isEmpty([]));
+console.log(!isEmpty([false, null]));
+
+// Practice using the includes() method
+
+/*
+7.4 Create a function called 'goodColor' that takes a single color (string) and an array of good colors (strings). It should return true if the color is in the array, otherwise false.
+*/
+
+
+/*
+7.41 Create a function called 'needToBuy' that takes a single item (string) and an array of owned items (strings). It should return true if the item isn't in the owned list (meaning we need to buy it!), otherwise false.
+*/
+
+
+/*
+7.42 Create a function called 'hasNull' that takes an array and returns true if any of the values are null, otherwise false.
+*/
+
+
+/*
+7.43 Create a function called 'badMatrix' that takes a 2D array with 3 rows. It should return true if any of the 3 rows contain a null value, otherwise false.
+*/
+
+
+/*
+7.44 Create a function called 'goodMatrix' that takes a 2D array with 3 rows. It should return true if none of the 3 rows contain a null value, otherwise false.
+*/
+
+
+/*
+7.45 Create a function called 'middleIndex' that takes an array and returns the index of the middle element, as per the following tests.
+
+Tip: Look up the Math.floor() function.
+*/
+
+
+/*
+===============================Complete by Wed meeting with Tim =======================================
+                             =====================================
+                                   =========================
+
+7.46 Create a function called 'middle' that takes an array and returns the middle element, as per the following tests.
+*/
+
+
+// Practice using the slice() method
+
+/*
+7.5 Print the first 3 elements of the following array, using slice().
+*/
+const randomNumbers = [82, 31, 21, 59, 67, 2, 36, 86, 18];
+
+
+
+/*
+7.501 Print the middle 3 random numbers, using slice().
+*/
+
+
+/*
+7.502 Print the last 3 random numbers, using slice().
+*/
+
+
+/*
+7.51 Create a function called 'tail' that takes an array and returns the "tail" end of it; everything but the first element.
+
+We can't use equality for comparing arrays, so it's tricky to write proper tests for functions like this, which return an array. For now, we can simply print the result and see if it looks right. The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- tail tests');
+// console.log(tail([1, 2, 3]), '=== [2, 3]');
+// console.log(tail([1, 2]), '=== [2]');
+// console.log(tail([1]), '=== []');
+// console.log(tail([]), '=== []');
+
+/*
+7.511 Create a function called 'firstIsRepeated' that takes an array and returns true if the first element exists more than once in the array, otherwise false.
+*/
+
+
+/*
+7.52 Create a function called 'init' that takes an array and returns all the elements except the last one.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- init tests');
+// console.log(init([1, 2, 3, 4]), '=== [2, 3, 4]');
+// console.log(init([1, 2, 3]), '=== [3, 4]');
+// console.log(init([9]), '=== []');
+// console.log(init([]), '=== []');
+
+/*
+7.521 Create a function called 'lastIsRepeated' that takes an array and returns true if the last element exists more than once in the array, otherwise false.
+*/
+
+
+/*
+7.522 Create a function called 'inner' that takes an array and returns all the elements except the first and last.
+*/
+
+
+/*
+7.53 Create a function called 'take' that takes a number (n) and an array. It should return the first n elements of the array.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- take tests');
+// console.log(take(3, [1, 2, 3, 4]), '=== [1, 2, 3]');
+// console.log(take(1, [1, 2, 3, 4]), '=== [1]');
+// console.log(take(0, [1, 2, 3, 4]), '=== []');
+// console.log(take(9, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
+
+/*
+7.54 Create a function called 'drop' that takes a number (n) and an array. It should drop the first n elements of the array and return the rest.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- drop tests');
+// console.log(drop(0, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
+// console.log(drop(1, [1, 2, 3, 4]), '=== [2, 3, 4]');
+// console.log(drop(2, [1, 2, 3, 4]), '=== [3, 4]');
+// console.log(drop(3, [1, 2, 3, 4]), '=== [4]');
+// console.log(drop(4, [1, 2, 3, 4]), '=== []');
+// console.log(drop(9, [1, 2, 3, 4]), '=== []');
+
+/*
+7.55 Create a function called 'middle3' that takes an array (of at least 3 elements) and returns the middle 3 elements (as an array), as per the following tests.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- middle3 tests');
+// console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
+// console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
+// console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+// console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
+
+/*
+7.551 Create a function called 'middleN' that takes a number (n) and an array (of at least n elements). It should return the middle n elements.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+// console.log('-- middleN tests');
+// console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+// console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
+// console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
