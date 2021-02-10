@@ -204,10 +204,7 @@ console.log(matrix1[1][3]);
 */
 // const valueInMatrix = (matrix, number, row, column) => {
 //   if (matrix[row][column] === number) {
-//     console.log(matrix);
-//     console.log(row);
-//     console.log(column);
-//     console.log(number);
+//     // console.log(matrix);
 //     return true;
 //   } else {
 //     return false;
@@ -275,28 +272,56 @@ console.log(!isEmpty([false, null]));
 /*
 7.4 Create a function called 'goodColor' that takes a single color (string) and an array of good colors (strings). It should return true if the color is in the array, otherwise false.
 */
+const colors = ['red', 'green', 'blue'];
 
+const goodColor = (arr, str) => arr.includes(str);
 
+console.log(goodColor(colors, 'green') === true);
+console.log(goodColor(colors, 'orange') === !true);
+console.log(goodColor(['red'], 'red') === true);
 /*
 7.41 Create a function called 'needToBuy' that takes a single item (string) and an array of owned items (strings). It should return true if the item isn't in the owned list (meaning we need to buy it!), otherwise false.
 */
+const needToBuy = (arr, str) => !arr.includes(str);
 
-
+console.log(needToBuy(['cat litter', 'dog food'], 'tea'));
+console.log(needToBuy(['cat litter', 'dog food'], 'leash'));
+console.log(needToBuy(['cat litter', 'dog food'], !'cat litter'));
+console.log(needToBuy([], 'tea'));
 /*
 7.42 Create a function called 'hasNull' that takes an array and returns true if any of the values are null, otherwise false.
 */
+const hasNull = arr => arr.includes(null);
 
-
+console.log('hasNull =============================================================================');
+console.log(hasNull(['', null]));
+console.log(hasNull([undefined]) !== null);
+console.log(hasNull([0]) !== null)
+console.log(hasNull([false]) !== null);
+console.log(hasNull([NaN]) !== null);
 /*
 7.43 Create a function called 'badMatrix' that takes a 2D array with 3 rows. It should return true if any of the 3 rows contain a null value, otherwise false.
 */
+const matrixNoGood = [
+  [null, 'Hello'],
+  ['0', 'grey', 1],
+  [3, 2, 1, false]
+];
 
+const badMatrix = matrixArr => matrixArr[0].includes(null) || matrixArr[1].includes(null) || matrixArr[2].includes(null);
 
+console.log('badMatrix ==============================================================================');
+console.log(badMatrix([ [null, 'Hello'], [1], [3, 2, 1, false] ]));
+console.log(!badMatrix([ ['hey!'], [true], ['null'] ]));
 /*
 7.44 Create a function called 'goodMatrix' that takes a 2D array with 3 rows. It should return true if none of the 3 rows contain a null value, otherwise false.
 */
+const goodMatrix = matrixArr => !matrixArr[0].includes(null) && !matrixArr[1].includes(null) && !matrixArr[2].includes(null);
 
-
+console.log('goodMatrix ============================================================================');
+console.log(goodMatrix([ ['hey!'], [true], ['null'] ]));
+console.log(!goodMatrix([ [null], [''], ['hi'] ]));
+console.log(!goodMatrix([ [null], [null], [null] ]));
 /*
 7.45 Create a function called 'middleIndex' that takes an array and returns the index of the middle element, as per the following tests.
 
