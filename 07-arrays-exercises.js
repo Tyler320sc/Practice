@@ -202,16 +202,15 @@ console.log(matrix1[1][3]);
 /*
 7.271 Create a function called 'valueInMatrix' that takes 4 arguments: matrix, number, row, column. It should return true if the number is found at the specified row and column in the 2D array matrix, otherwise false. For example, the number 10 is found at row 3, column 2 in the previous matrix.
 */
-// const valueInMatrix = (matrix, number, row, column) => {
-//   if (matrix[row][column] === number) {
-//     // console.log(matrix);
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// console.log('valueInMatrix==========================================================================');
-// console.log(valueInMatrix(matrix1[2][1]) === 10);
+const valueInMatrix = (matrix, number, row, column) => {
+  if (matrix[row - 1][column - 1] === number) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log('valueInMatrix==========================================================================');
+console.log(valueInMatrix(matrix1, 10, 3, 2));
 
 // Practice using length
 
@@ -256,7 +255,7 @@ console.log(matrix2[0].length);
 7.35 Print the length of the last row in the following 2D array.
 */
 const bigMatrix = [[45,39,89,67,7,71,85,44,47,39],[89,32,81,19,43,17,47,10,6,58],[8,59,79,3,14,21,83,18,27,49],[24,32,72,3,22,32,5,69,15,61],[64,31,73,28,5,98,6,29,90,4],[54,6,92,92,56,84,81,7,53,62],[6,33,41,77,23,3,46,19,57,40],[3,79,65,30,79,54,25,53,35,71],[60,1,54,49,44,61,42,50,18,43],[91,46,7,50,95,14,45,4,98,22]];
-console.log(bigMatrix[9].length);
+console.log(bigMatrix[bigMatrix.length - 1].length);
 
 
 /*
@@ -286,7 +285,7 @@ const needToBuy = (arr, str) => !arr.includes(str);
 
 console.log(needToBuy(['cat litter', 'dog food'], 'tea'));
 console.log(needToBuy(['cat litter', 'dog food'], 'leash'));
-console.log(needToBuy(['cat litter', 'dog food'], !'cat litter'));
+console.log(!needToBuy(['cat litter', 'dog food'], 'cat litter'));
 console.log(needToBuy([], 'tea'));
 /*
 7.42 Create a function called 'hasNull' that takes an array and returns true if any of the values are null, otherwise false.
@@ -295,10 +294,10 @@ const hasNull = arr => arr.includes(null);
 
 console.log('hasNull =============================================================================');
 console.log(hasNull(['', null]));
-console.log(hasNull([undefined]) !== null);
-console.log(hasNull([0]) !== null)
-console.log(hasNull([false]) !== null);
-console.log(hasNull([NaN]) !== null);
+console.log(hasNull([undefined]) === false);
+console.log(hasNull([0]) === false)
+console.log(hasNull([false]) === false);
+console.log(hasNull([NaN]) === false);
 /*
 7.43 Create a function called 'badMatrix' that takes a 2D array with 3 rows. It should return true if any of the 3 rows contain a null value, otherwise false.
 */
@@ -316,7 +315,10 @@ console.log(!badMatrix([ ['hey!'], [true], ['null'] ]));
 /*
 7.44 Create a function called 'goodMatrix' that takes a 2D array with 3 rows. It should return true if none of the 3 rows contain a null value, otherwise false.
 */
-const goodMatrix = matrixArr => !matrixArr[0].includes(null) && !matrixArr[1].includes(null) && !matrixArr[2].includes(null);
+// const goodMatrix = matrixArr => !matrixArr[0].includes(null) && !matrixArr[1].includes(null) && !matrixArr[2].includes(null);
+
+const goodMatrix = matrixArr => !badMatrix(matrixArr);
+
 
 console.log('goodMatrix ============================================================================');
 console.log(goodMatrix([ ['hey!'], [true], ['null'] ]));
@@ -324,18 +326,53 @@ console.log(!goodMatrix([ [null], [''], ['hi'] ]));
 console.log(!goodMatrix([ [null], [null], [null] ]));
 /*
 7.45 Create a function called 'middleIndex' that takes an array and returns the index of the middle element, as per the following tests.
-
 Tip: Look up the Math.floor() function.
 */
+const middleIndex = arr => {
+  if (arr.length % 2 !== 0) { 
+    const oddIndex = arr[Math.floor(arr.length / 2)];
+    return arr.indexOf(oddIndex);
+  } else {
+    const evenIndex = arr[Math.floor((arr.length - 1) / 2)];
+    return arr.indexOf(evenIndex);
+  }
+}
+console.log('-- middleIndex tests');
+console.log(middleIndex([1]) === 0);
+console.log(middleIndex([1, 2]) === 1); // make the odd case pass and it'll work
+console.log(middleIndex([1, 2, 3]) === 1);
+console.log(middleIndex([1, 2, 3, 4]) === 2); //
+console.log(middleIndex([1, 2, 3, 4, 5]) === 2);
 
+const middleIndex2 = arr => {
+    arr.length % 2 !== 0; 
+    const indexFound = arr[Math.floor(arr.length / 2)];
+    return arr.indexOf(indexFound); // no indexOf, no methods except Math.floor
+}
 
+console.log('middleIndex2 ===========================================================================');
+console.log(middleIndex2([1, 2, 3, 4, 5]) === 2);
+console.log(middleIndex2([1, 2, 3, 4, 5, 6, 7]) === 3);
+console.log(middleIndex2([1, 2, 3, 4]) === 2);
+console.log(middleIndex2([1, 2, 3, 4]) === 2);
 /*
-===============================Complete by Wed meeting with Tim =======================================
-                             =====================================
-                                   =========================
 
 7.46 Create a function called 'middle' that takes an array and returns the middle element, as per the following tests.
 */
+const middle = arr => {
+  return arr[Math.floor(arr.length / 2)];
+}
+console.log('middle =================================================================================');
+console.log(middle([1, 2, 3, 4, 5]) === 3);
+console.log(middle([1, 2, 3, 4, 5, 6, 7]) === 4);
+console.log(middle([true, 'Hello!', false]) === 'Hello!');
+console.log(middle([1]) === 1);
+console.log(middle([1, 2]) === 2);
+console.log(middle([1, 2, 3]) === 2);
+console.log(middle([1, 2, 3, 4]) === 3);
+console.log(middle([1, 2, 3, 4, 5]) === 3);
+console.log(middle([1, 2, 3, 4, 5, 6]) === 4);
+
 
 
 // Practice using the slice() method
@@ -344,37 +381,44 @@ Tip: Look up the Math.floor() function.
 7.5 Print the first 3 elements of the following array, using slice().
 */
 const randomNumbers = [82, 31, 21, 59, 67, 2, 36, 86, 18];
-
-
+                                
+console.log(randomNumbers.slice(0, 3));
 
 /*
 7.501 Print the middle 3 random numbers, using slice().
 */
-
+console.log(randomNumbers.slice(3, 6));
 
 /*
 7.502 Print the last 3 random numbers, using slice().
 */
-
+console.log(randomNumbers.slice(6));
 
 /*
 7.51 Create a function called 'tail' that takes an array and returns the "tail" end of it; everything but the first element.
 
 We can't use equality for comparing arrays, so it's tricky to write proper tests for functions like this, which return an array. For now, we can simply print the result and see if it looks right. The following lines should help you see if your function works correctly.
 */
+const tail = arr => arr.slice(1);
 
-
-// console.log('-- tail tests');
-// console.log(tail([1, 2, 3]), '=== [2, 3]');
-// console.log(tail([1, 2]), '=== [2]');
-// console.log(tail([1]), '=== []');
-// console.log(tail([]), '=== []');
+console.log('-- tail tests');
+console.log(tail([1, 2, 3]), '=== [2, 3]');
+console.log(tail([1, 2]), '=== [2]');
+console.log(tail([1]), '=== []');
+console.log(tail([]), '=== []');
 
 /*
 7.511 Create a function called 'firstIsRepeated' that takes an array and returns true if the first element exists more than once in the array, otherwise false.
 */
-
-
+const firstIsRepeated = arr => {
+  if (arr[0] === tail(arr)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log('firstIsRepeated =========================================================================');
+console.log(firstIsRepeated([1, 2, 3, 1]));
 /*
 7.52 Create a function called 'init' that takes an array and returns all the elements except the last one.
 
@@ -451,3 +495,35 @@ The following lines should help you see if your function works correctly.
 // console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
 // console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
 // console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
+
+
+
+// Practice using the sort() method
+
+/*
+7.6 Create a function called 'bottom3' that takes an array (of at least 3 elements) and returns the bottom 3 elements in ascending order.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+console.log('-- bottom3 tests');
+console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
+console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
+console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
+
+/*
+7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.
+*/
+
+
+// Practice using the reverse() method
+
+/*
+7.7 Create a function called 'top3' that takes an array (of at least 3 elements) and returns the top 3 elements in descending order.
+*/
+
+
+/*
+7.71 Create a function called 'topN' that takes a number (n) and an array (of at least n elements). It should return the top n elements in descending order.
+*/
