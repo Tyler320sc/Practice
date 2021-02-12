@@ -329,32 +329,16 @@ console.log(!goodMatrix([ [null], [null], [null] ]));
 Tip: Look up the Math.floor() function.
 */
 const middleIndex = arr => {
-  if (arr.length % 2 !== 0) { 
-    const oddIndex = arr[Math.floor(arr.length / 2)];
-    return arr.indexOf(oddIndex);
-  } else {
-    const evenIndex = arr[Math.floor((arr.length - 1) / 2)];
-    return arr.indexOf(evenIndex);
-  }
+  const element = arr[Math.floor((arr.length) / 2)];
+  return arr.indexOf(element);                                 // - 2  . . ?
 }
+// arr[Math.floor((arr.length - 1) / 2)];
 console.log('-- middleIndex tests');
 console.log(middleIndex([1]) === 0);
 console.log(middleIndex([1, 2]) === 1); // make the odd case pass and it'll work
 console.log(middleIndex([1, 2, 3]) === 1);
-console.log(middleIndex([1, 2, 3, 4]) === 2); //
+console.log(middleIndex([1, 2, 3, 4]) === 2); // no methods besides Math.floor
 console.log(middleIndex([1, 2, 3, 4, 5]) === 2);
-
-const middleIndex2 = arr => {
-    arr.length % 2 !== 0; 
-    const indexFound = arr[Math.floor(arr.length / 2)];
-    return arr.indexOf(indexFound); // no indexOf, no methods except Math.floor
-}
-
-console.log('middleIndex2 ===========================================================================');
-console.log(middleIndex2([1, 2, 3, 4, 5]) === 2);
-console.log(middleIndex2([1, 2, 3, 4, 5, 6, 7]) === 3);
-console.log(middleIndex2([1, 2, 3, 4]) === 2);
-console.log(middleIndex2([1, 2, 3, 4]) === 2);
 /*
 
 7.46 Create a function called 'middle' that takes an array and returns the middle element, as per the following tests.
@@ -367,7 +351,7 @@ console.log(middle([1, 2, 3, 4, 5]) === 3);
 console.log(middle([1, 2, 3, 4, 5, 6, 7]) === 4);
 console.log(middle([true, 'Hello!', false]) === 'Hello!');
 console.log(middle([1]) === 1);
-console.log(middle([1, 2]) === 2);
+console.log(middle([1, 2]) === 2);                         // These may already pass
 console.log(middle([1, 2, 3]) === 2);
 console.log(middle([1, 2, 3, 4]) === 3);
 console.log(middle([1, 2, 3, 4, 5]) === 3);
@@ -411,10 +395,10 @@ console.log(tail([]), '=== []');
 7.511 Create a function called 'firstIsRepeated' that takes an array and returns true if the first element exists more than once in the array, otherwise false.
 */
 const firstIsRepeated = arr => {
-  if (arr[0] === tail(arr)) {
-    return true;
-  } else {
-    return false;
+  const firstElement = arr[0];
+  const newArr = tail(arr);
+  if (arr.includes()) {
+
   }
 }
 console.log('firstIsRepeated =========================================================================');
@@ -507,10 +491,10 @@ The following lines should help you see if your function works correctly.
 */
 
 
-console.log('-- bottom3 tests');
-console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
-console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
-console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
+// console.log('-- bottom3 tests');
+// console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
+// console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
+// console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
 
 /*
 7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.
