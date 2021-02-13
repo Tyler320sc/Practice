@@ -328,23 +328,27 @@ console.log(!goodMatrix([ [null], [null], [null] ]));
 7.45 Create a function called 'middleIndex' that takes an array and returns the index of the middle element, as per the following tests.
 Tip: Look up the Math.floor() function.
 */
-const middleIndex = arr => {
-  const element = arr[Math.floor((arr.length) / 2)];
-  return arr.indexOf(element);                                 // - 2  . . ?
+const middleIndex = arr => {  
+   return Math.floor((arr.length) / 2);                               
 }
-// arr[Math.floor((arr.length - 1) / 2)];
 console.log('-- middleIndex tests');
 console.log(middleIndex([1]) === 0);
 console.log(middleIndex([1, 2]) === 1); // make the odd case pass and it'll work
 console.log(middleIndex([1, 2, 3]) === 1);
 console.log(middleIndex([1, 2, 3, 4]) === 2); // no methods besides Math.floor
 console.log(middleIndex([1, 2, 3, 4, 5]) === 2);
+console.log(middleIndex(['Alice', 'Bob', 'Carol']) === 1);
+
 /*
+
 
 7.46 Create a function called 'middle' that takes an array and returns the middle element, as per the following tests.
 */
+
+
 const middle = arr => {
-  return arr[Math.floor(arr.length / 2)];
+  // const m = middleIndex(arr);
+  return arr[middleIndex(arr)];
 }
 console.log('middle =================================================================================');
 console.log(middle([1, 2, 3, 4, 5]) === 3);
@@ -394,33 +398,42 @@ console.log(tail([]), '=== []');
 /*
 7.511 Create a function called 'firstIsRepeated' that takes an array and returns true if the first element exists more than once in the array, otherwise false.
 */
-const firstIsRepeated = arr => {
-  const firstElement = arr[0];
-  const newArr = tail(arr);
-  if (arr.includes()) {
-
-  }
-}
+const firstIsRepeated = arr => arr.slice(1).includes(arr[0]);
+  
 console.log('firstIsRepeated =========================================================================');
 console.log(firstIsRepeated([1, 2, 3, 1]));
+console.log(firstIsRepeated([8, 0, 9, 8]));
+console.log(!firstIsRepeated([0, 1, 2, 3, 4]));
+console.log(firstIsRepeated([true, false, !false]));
+console.log(firstIsRepeated(['Hello', 'Ty', true, 'Hello']));
+console.log(!firstIsRepeated(['amazing', 'grace', 'how', 'sweet']));
 /*
 7.52 Create a function called 'init' that takes an array and returns all the elements except the last one.
 
 The following lines should help you see if your function works correctly.
 */
+const init = arr => arr.slice(0, arr.length - 1); 
 
-
-// console.log('-- init tests');
-// console.log(init([1, 2, 3, 4]), '=== [2, 3, 4]');
-// console.log(init([1, 2, 3]), '=== [3, 4]');
-// console.log(init([9]), '=== []');
-// console.log(init([]), '=== []');
-
+console.log('-- init tests');
+console.log(init([1, 2, 3, 4]), '=== [2, 3, 4]');
+console.log(init([1, 2, 3]), '=== [3, 4]');
+console.log(init([9]), '=== []');
+console.log(init([]), '=== []');
+console.log(init(['Ty', 'Tim', 'Leah']), "=== ['Ty', 'Tim']");
+console.log(init([1, 2, 3]), '=== [1, 2]');
 /*
 7.521 Create a function called 'lastIsRepeated' that takes an array and returns true if the last element exists more than once in the array, otherwise false.
 */
-
-
+const lastIsRepeated = arr => {
+  const lastElementIndex = arr.slice(arr.length - 1);
+  return arr.includes(lastElementIndex);
+}
+console.log('-- lastIsRepeated');
+console.log(lastIsRepeated(['Help', 'me', 'please!', 'Help']));
+console.log(lastIsRepeated([12, 113, 88, 99, 12]));
+console.log(lastIsRepeated([true, false, true]));
+console.log(lastIsRepeated(['Learning', 'Js', 'is', 'fun!']) === false);
+// const firstIsRepeated = arr => arr.slice(1).includes(arr[0]);
 /*
 7.522 Create a function called 'inner' that takes an array and returns all the elements except the first and last.
 */
