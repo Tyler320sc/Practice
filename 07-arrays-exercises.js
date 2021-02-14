@@ -333,9 +333,9 @@ const middleIndex = arr => {
 }
 console.log('-- middleIndex tests');
 console.log(middleIndex([1]) === 0);
-console.log(middleIndex([1, 2]) === 1); // make the odd case pass and it'll work
+console.log(middleIndex([1, 2]) === 1); 
 console.log(middleIndex([1, 2, 3]) === 1);
-console.log(middleIndex([1, 2, 3, 4]) === 2); // no methods besides Math.floor
+console.log(middleIndex([1, 2, 3, 4]) === 2); 
 console.log(middleIndex([1, 2, 3, 4, 5]) === 2);
 console.log(middleIndex(['Alice', 'Bob', 'Carol']) === 1);
 
@@ -346,10 +346,7 @@ console.log(middleIndex(['Alice', 'Bob', 'Carol']) === 1);
 */
 
 
-const middle = arr => {
-  // const m = middleIndex(arr);
-  return arr[middleIndex(arr)];
-}
+const middle = arr => arr[middleIndex(arr)];
 console.log('middle =================================================================================');
 console.log(middle([1, 2, 3, 4, 5]) === 3);
 console.log(middle([1, 2, 3, 4, 5, 6, 7]) === 4);
@@ -475,14 +472,18 @@ console.log(drop(9, [1, 2, 3, 4]), '=== []');
 
 The following lines should help you see if your function works correctly.
 */
+const middle3 = arr => {
+  
+}
 
+// Math.floor((arr.length) / 2)
 
-// console.log('-- middle3 tests');
-// console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
-// console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
-// console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
-// console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
+console.log('-- middle3 tests');
+console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
+console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
+console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
 
 /*
 7.551 Create a function called 'middleN' that takes a number (n) and an array (of at least n elements). It should return the middle n elements.
