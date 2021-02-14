@@ -424,48 +424,51 @@ console.log(init([1, 2, 3]), '=== [1, 2]');
 /*
 7.521 Create a function called 'lastIsRepeated' that takes an array and returns true if the last element exists more than once in the array, otherwise false.
 */
-const lastIsRepeated = arr => {
-  const lastElementIndex = arr.slice(arr.length - 1);
-  return arr.includes(lastElementIndex);
-}
+const lastIsRepeated = arr => arr.slice(0, arr.length - 1).includes(arr[arr.length - 1]);
+
+
 console.log('-- lastIsRepeated');
 console.log(lastIsRepeated(['Help', 'me', 'please!', 'Help']));
 console.log(lastIsRepeated([12, 113, 88, 99, 12]));
 console.log(lastIsRepeated([true, false, true]));
-console.log(lastIsRepeated(['Learning', 'Js', 'is', 'fun!']) === false);
-// const firstIsRepeated = arr => arr.slice(1).includes(arr[0]);
+console.log(!lastIsRepeated(['Learning', 'Js', 'is', 'fun!']));
+console.log(!lastIsRepeated([18, 4, 21, true, 'P-Diddy']));
 /*
-7.522 Create a function called 'inner' that takes an array and returns all the elements except the first and last.
+7.522 Create a function called 'inner' that takes an array and returns all the elements except the first and last. 
 */
+const inner = arr => arr.slice(1, arr.length - 1);
 
-
+console.log('--- inner');
+console.log(inner([18, 4, 21, true, 'P-Diddy']), '=== [4, 21, true]');
+console.log(inner([12, 113, 88, 99, 12]), '=== [113, 88, 99]');
+console.log(inner(['Learning', 'Js', 'is', 'fun!']), '=== ["Js", "is"]');
 /*
 7.53 Create a function called 'take' that takes a number (n) and an array. It should return the first n elements of the array.
 
 The following lines should help you see if your function works correctly.
 */
+const take = (n, arr) => arr.slice(0, n);
 
-
-// console.log('-- take tests');
-// console.log(take(3, [1, 2, 3, 4]), '=== [1, 2, 3]');
-// console.log(take(1, [1, 2, 3, 4]), '=== [1]');
-// console.log(take(0, [1, 2, 3, 4]), '=== []');
-// console.log(take(9, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
+console.log('-- take tests');
+console.log(take(3, [1, 2, 3, 4]), '=== [1, 2, 3]');
+console.log(take(1, [1, 2, 3, 4]), '=== [1]');
+console.log(take(0, [1, 2, 3, 4]), '=== []');
+console.log(take(9, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
 
 /*
 7.54 Create a function called 'drop' that takes a number (n) and an array. It should drop the first n elements of the array and return the rest.
 
 The following lines should help you see if your function works correctly.
 */
+const drop = (n, arr) => arr.slice(n);
 
-
-// console.log('-- drop tests');
-// console.log(drop(0, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
-// console.log(drop(1, [1, 2, 3, 4]), '=== [2, 3, 4]');
-// console.log(drop(2, [1, 2, 3, 4]), '=== [3, 4]');
-// console.log(drop(3, [1, 2, 3, 4]), '=== [4]');
-// console.log(drop(4, [1, 2, 3, 4]), '=== []');
-// console.log(drop(9, [1, 2, 3, 4]), '=== []');
+console.log('-- drop tests');
+console.log(drop(0, [1, 2, 3, 4]), '=== [1, 2, 3, 4]');
+console.log(drop(1, [1, 2, 3, 4]), '=== [2, 3, 4]');
+console.log(drop(2, [1, 2, 3, 4]), '=== [3, 4]');
+console.log(drop(3, [1, 2, 3, 4]), '=== [4]');
+console.log(drop(4, [1, 2, 3, 4]), '=== []');
+console.log(drop(9, [1, 2, 3, 4]), '=== []');
 
 /*
 7.55 Create a function called 'middle3' that takes an array (of at least 3 elements) and returns the middle 3 elements (as an array), as per the following tests.
