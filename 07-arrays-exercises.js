@@ -475,8 +475,7 @@ The following lines should help you see if your function works correctly.
 const middle3 = arr => {
   
 }
-
-// Math.floor((arr.length) / 2)
+// Math.floor((arr.length) / 2) ===== refer to for getting middle elements and go from there . . . ?
 
 console.log('-- middle3 tests');
 console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
@@ -491,11 +490,13 @@ console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
 The following lines should help you see if your function works correctly.
 */
 
-
 // console.log('-- middleN tests');
 // console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
 // console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
 // console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
+
+// ============================================ New exercises =============================================
+
 
 
 
@@ -527,4 +528,118 @@ The following lines should help you see if your function works correctly.
 
 /*
 7.71 Create a function called 'topN' that takes a number (n) and an array (of at least n elements). It should return the top n elements in descending order.
+*/
+
+// Practice adding elements to arrays
+
+/*
+7.8 Print the following array with the number 4 added to the end, so we get [1, 2, 3, 4].
+*/
+const oneTwoThree = [1, 2, 3];
+
+
+
+/*
+7.801 Print the following array with the number 1 added to the beginning, so we get [1, 2, 3, 4].
+*/
+const twoThreeFour = [2, 3, 4];
+
+
+
+/*
+7.802 Print the following array with the name 'Dave' added to the end, so we get ['Alice', 'Bob', 'Carol', 'Dave'].
+*/
+const someNames = ['Alice', 'Bob', 'Carol'];
+
+
+
+/*
+7.803 Print the following two arrays added together, so we get ['apple', 'banana', 'cherry', 'date', 'elderberry'].
+*/
+const fruits = ['apple', 'banana', 'cherry'];
+const moreFruits = ['date', 'elderberry'];
+
+
+
+/*
+7.804 Print the following 2D array with another row added to the end.
+*/
+const matrix3 = [
+  [1, 2, 3],
+  [4, 5, 6]
+];
+
+
+
+/*
+7.81 Create a function called 'nullHead' that takes an array and returns a new array with the first element replaced with null.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+console.log('-- nullHead tests');
+console.log(nullHead([1, 2, 3]), '=== [null, 2, 3]');
+console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
+
+/*
+7.82 Create a function called 'append' that takes a value and an array, and returns a new array with the value added to the end.
+*/
+
+
+/*
+7.821 Create a function called 'appendHead' that takes an array and returns a new array with its first value added to the end.
+*/
+
+
+/*
+7.83 Create a function called 'swapEnds' that takes an array and returns a new array with the first and last elements swapped.
+
+Tip: Try using our head(), last(), and inner() functions to help.
+*/
+
+
+/*
+7.84 Create a function called 'countUp' that takes an array of numbers counting up and returns a new array with the next number added to the end.
+
+The following lines should help you see if your function works correctly.
+
+Tip: Try using our last() function to help.
+*/
+
+
+console.log('-- countUp tests');
+console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
+console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
+
+/*
+7.841 Create a function called 'countMore' that takes an array of numbers in a sequence (with a constant interval) and returns a new array with the next number in the sequence added to the end.
+
+The following lines should help you see if your function works correctly.
+*/
+
+
+console.log('-- countMore tests');
+console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');
+console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');
+console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');
+console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
+console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
+
+/*
+7.85 Create a function called 'insertAt' that takes an index, a value, and an array. It should return a new array with the given value inserted at the given index.
+
+The following lines should help you see if your function works correctly.
+
+Tip: Try using our take() and drop() functions to help.
+*/
+
+
+console.log('-- insertAt tests');
+console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
+
+/*
+7.86 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
 */
