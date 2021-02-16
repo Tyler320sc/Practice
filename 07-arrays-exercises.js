@@ -395,8 +395,10 @@ console.log(tail([]), '=== []');
 /*
 7.511 Create a function called 'firstIsRepeated' that takes an array and returns true if the first element exists more than once in the array, otherwise false.
 */
-const firstIsRepeated = arr => arr.slice(1).includes(arr[0]);
+// const firstIsRepeated = arr => arr.slice(1).includes(arr[0]);
   
+const firstIsRepeated = arr => tail(arr).includes(head(arr));
+
 console.log('firstIsRepeated =========================================================================');
 console.log(firstIsRepeated([1, 2, 3, 1]));
 console.log(firstIsRepeated([8, 0, 9, 8]));
@@ -409,7 +411,7 @@ console.log(!firstIsRepeated(['amazing', 'grace', 'how', 'sweet']));
 
 The following lines should help you see if your function works correctly.
 */
-const init = arr => arr.slice(0, arr.length - 1); 
+const init = arr => arr.slice(0, -1); 
 
 console.log('-- init tests');
 console.log(init([1, 2, 3, 4]), '=== [2, 3, 4]');
@@ -421,8 +423,9 @@ console.log(init([1, 2, 3]), '=== [1, 2]');
 /*
 7.521 Create a function called 'lastIsRepeated' that takes an array and returns true if the last element exists more than once in the array, otherwise false.
 */
-const lastIsRepeated = arr => arr.slice(0, arr.length - 1).includes(arr[arr.length - 1]);
+// const lastIsRepeated = arr => arr.slice(0, arr.length - 1).includes(arr[arr.length - 1]);
 
+const lastIsRepeated = arr => init(arr).includes(last(arr));
 
 console.log('-- lastIsRepeated');
 console.log(lastIsRepeated(['Help', 'me', 'please!', 'Help']));
@@ -433,7 +436,9 @@ console.log(!lastIsRepeated([18, 4, 21, true, 'P-Diddy']));
 /*
 7.522 Create a function called 'inner' that takes an array and returns all the elements except the first and last. 
 */
-const inner = arr => arr.slice(1, arr.length - 1);
+// const inner = arr => arr.slice(1, -1);
+
+const inner = arr => init(tail(arr));
 
 console.log('--- inner');
 console.log(inner([18, 4, 21, true, 'P-Diddy']), '=== [4, 21, true]');
@@ -472,18 +477,39 @@ console.log(drop(9, [1, 2, 3, 4]), '=== []');
 
 The following lines should help you see if your function works correctly.
 */
-const middle3 = arr => {
-  
-}
-// Math.floor((arr.length) / 2) ===== refer to for getting middle elements and go from there . . . ?
+// const middle3 = arr => {
+//   if (arr.length === 3) {
+//     return arr.slice(0, -1);
+//   } else if (arr.length === 4) {
+//     return arr.slice(1, -1);
+//   } else if (arr.length === 5) {
+//     return arr.slice(1, 4);
+//   } else if (arr.length === 6) {
+//     return arr.slice(2, 4);
+//   } else if (arr.length === 7) {
+//     return arr.slice(3, 5);
+//   } else if (arr.length === 8) {
+//     return arr.slice(3, 6);
+//   } else if (arr.length === 9) {
+//     return arr.slice(3, 6);
+//   } else if (arr.length === 10) {
+//     return arr.slice(4, 7);
+//   } else if (arr.length === 11) {
+//     return arr.slice(4, 7);
+//   }
+// } 
+// Add a couple more for length 7 and 8. And try to put two arguments in slice for each one so they look more similar 
 
-console.log('-- middle3 tests');
-console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
-console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
-console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
-console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
-console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
-
+// console.log('-- middle3 tests');
+// console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
+// console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
+// console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+// console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8]), '=== [4, 5, 6]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [4, 5, 6]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [5, 6, 7]');
+// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), '=== [5, 6, 7]');
 /*
 7.551 Create a function called 'middleN' that takes a number (n) and an array (of at least n elements). It should return the middle n elements.
 
@@ -507,17 +533,23 @@ The following lines should help you see if your function works correctly.
 
 The following lines should help you see if your function works correctly.
 */
+const bottom3 = arr => arr.sort().slice(0, 3);
 
-
-// console.log('-- bottom3 tests');
-// console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
-// console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
-// console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
+console.log('-- bottom3 tests');
+console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
+console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
+console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
 
 /*
 7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.
 */
-
+const bottomN = (n, arr) => {
+  if (arr.length >= n) {
+    return arr.sort().slice(n);
+  } 
+}
+console.log('--- bottomN');
+console.log(bottomN(3, [3, 2, 1]), '=== [1, 2, 3]');
 
 // Practice using the reverse() method
 
@@ -535,39 +567,39 @@ The following lines should help you see if your function works correctly.
 /*
 7.8 Print the following array with the number 4 added to the end, so we get [1, 2, 3, 4].
 */
-const oneTwoThree = [1, 2, 3];
+// const oneTwoThree = [1, 2, 3];
 
 
 
 /*
 7.801 Print the following array with the number 1 added to the beginning, so we get [1, 2, 3, 4].
 */
-const twoThreeFour = [2, 3, 4];
+// const twoThreeFour = [2, 3, 4];
 
 
 
 /*
 7.802 Print the following array with the name 'Dave' added to the end, so we get ['Alice', 'Bob', 'Carol', 'Dave'].
 */
-const someNames = ['Alice', 'Bob', 'Carol'];
+// const someNames = ['Alice', 'Bob', 'Carol'];
 
 
 
 /*
 7.803 Print the following two arrays added together, so we get ['apple', 'banana', 'cherry', 'date', 'elderberry'].
 */
-const fruits = ['apple', 'banana', 'cherry'];
-const moreFruits = ['date', 'elderberry'];
+// const fruits = ['apple', 'banana', 'cherry'];
+// const moreFruits = ['date', 'elderberry'];
 
 
 
 /*
 7.804 Print the following 2D array with another row added to the end.
 */
-const matrix3 = [
-  [1, 2, 3],
-  [4, 5, 6]
-];
+// const matrix3 = [
+//   [1, 2, 3],
+//   [4, 5, 6]
+// ];
 
 
 
@@ -578,9 +610,9 @@ The following lines should help you see if your function works correctly.
 */
 
 
-console.log('-- nullHead tests');
-console.log(nullHead([1, 2, 3]), '=== [null, 2, 3]');
-console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
+// console.log('-- nullHead tests');
+// console.log(nullHead([1, 2, 3]), '=== [null, 2, 3]');
+// console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
 
 /*
 7.82 Create a function called 'append' that takes a value and an array, and returns a new array with the value added to the end.
@@ -588,6 +620,7 @@ console.log(nullHead(['a', 'b', 'c']), '=== [null, b, c]');
 
 
 /*
+========================== Complete by Wed ================================================================
 7.821 Create a function called 'appendHead' that takes an array and returns a new array with its first value added to the end.
 */
 
@@ -608,9 +641,9 @@ Tip: Try using our last() function to help.
 */
 
 
-console.log('-- countUp tests');
-console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
-console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
+// console.log('-- countUp tests');
+// console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
+// console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
 
 /*
 7.841 Create a function called 'countMore' that takes an array of numbers in a sequence (with a constant interval) and returns a new array with the next number in the sequence added to the end.
@@ -619,12 +652,12 @@ The following lines should help you see if your function works correctly.
 */
 
 
-console.log('-- countMore tests');
-console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');
-console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');
-console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');
-console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
-console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
+// console.log('-- countMore tests');
+// console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');
+// console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');
+// console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');
+// console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
+// console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
 
 /*
 7.85 Create a function called 'insertAt' that takes an index, a value, and an array. It should return a new array with the given value inserted at the given index.
@@ -635,10 +668,10 @@ Tip: Try using our take() and drop() functions to help.
 */
 
 
-console.log('-- insertAt tests');
-console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
-console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
-console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
+// console.log('-- insertAt tests');
+// console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
+// console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
+// console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
 
 /*
 7.86 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
