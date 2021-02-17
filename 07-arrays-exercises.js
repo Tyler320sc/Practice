@@ -477,39 +477,21 @@ console.log(drop(9, [1, 2, 3, 4]), '=== []');
 
 The following lines should help you see if your function works correctly.
 */
-// const middle3 = arr => {
-//   if (arr.length === 3) {
-//     return arr.slice(0, -1);
-//   } else if (arr.length === 4) {
-//     return arr.slice(1, -1);
-//   } else if (arr.length === 5) {
-//     return arr.slice(1, 4);
-//   } else if (arr.length === 6) {
-//     return arr.slice(2, 4);
-//   } else if (arr.length === 7) {
-//     return arr.slice(3, 5);
-//   } else if (arr.length === 8) {
-//     return arr.slice(3, 6);
-//   } else if (arr.length === 9) {
-//     return arr.slice(3, 6);
-//   } else if (arr.length === 10) {
-//     return arr.slice(4, 7);
-//   } else if (arr.length === 11) {
-//     return arr.slice(4, 7);
-//   }
-// } 
-// Add a couple more for length 7 and 8. And try to put two arguments in slice for each one so they look more similar 
+const middle3 = arr => arr.slice(Math.floor((arr.length) / 2 - 1), Math.floor((arr.length) / 2 + 2));
 
-// console.log('-- middle3 tests');
-// console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
-// console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
-// console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
-// console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8]), '=== [4, 5, 6]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [4, 5, 6]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [5, 6, 7]');
-// console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), '=== [5, 6, 7]');
+console.log('-- middle3 tests');
+console.log(middle3([1, 2, 3]), '=== [1, 2, 3]');
+console.log(middle3([1, 2, 3, 4]), '=== [2, 3, 4]');
+console.log(middle3([1, 2, 3, 4, 5]), '=== [2, 3, 4]');
+console.log(middle3([1, 2, 3, 4, 5, 6]), '=== [3, 4, 5]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7]), '=== [3, 4, 5]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8]), '=== [4, 5, 6]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9]), '=== [4, 5, 6]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), '=== [5, 6, 7]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), '=== [5, 6, 7]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]), '=== [6, 7, 8]');
+console.log(middle3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]), '=== [6, 7, 8]');
+
 /*
 7.551 Create a function called 'middleN' that takes a number (n) and an array (of at least n elements). It should return the middle n elements.
 
@@ -533,31 +515,45 @@ The following lines should help you see if your function works correctly.
 
 The following lines should help you see if your function works correctly.
 */
-const bottom3 = arr => arr.sort().slice(0, 3);
+const bottom3 = arr => arr.sort((a, b) => a - b).slice(0, 3);
 
 console.log('-- bottom3 tests');
 console.log(bottom3([9, 2, 5, 4, 7, 6, 1, 3, 8]), '=== [1, 2, 3]');
 console.log(bottom3([9, 2, 5, 1, 4, 1, 1, 3, 8]), '=== [1, 1, 1]');
 console.log(bottom3([3, 2, 1]), '=== [1, 2, 3]');
+console.log(bottom3([101, 19, 15, 18]), '=== [15, 18, 19]');
 
 /*
 7.61 Create a function called 'bottomN' that takes a number (n) and an array (of at least n elements). It should return the bottom n elements in ascending order.
 */
 const bottomN = (n, arr) => {
   if (arr.length >= n) {
-    return arr.sort().slice(n);
-  } 
+    return arr.sort((a, b) => a - b).slice(0, n);
+  }
 }
 console.log('--- bottomN');
+console.log(bottomN(1, [0, 1, 2]), '=== [0]');
 console.log(bottomN(3, [3, 2, 1]), '=== [1, 2, 3]');
+console.log(bottomN(4, [9, 8, 7, 6, 5]), '=== [5, 6, 7, 8]');
+console.log(bottomN(5, [9, 7, 3, 2, 1, 5, 4, 0]), '=== [0, 1, 2, 3, 4]');
+console.log(bottomN(5, [99, 89, 97, 101, 3, 0, 13, 105, 10, 2009]), '=== [0, 3, 10, 13, 89]');
+console.log(bottomN(5, [101, 19, 22, 38, 44, 0, 1, 2, 4, 3]), '=== [0, 1, 2, 3, 4]');
 
 // Practice using the reverse() method
 
 /*
 7.7 Create a function called 'top3' that takes an array (of at least 3 elements) and returns the top 3 elements in descending order.
 */
+const top3 = arr => arr.sort((a, b) => b - a).slice(0, 3); // Can only solve w/ reverse() ? ? ?
 
+console.log('----- top3');
+console.log(top3([1, 2, 3]), '=== [3, 2, 1]');
+console.log(top3([8, 9, 10, 11]), '=== [11, 10, 9]');
+console.log(top3([101, 38, 43, 1, 0]), '=== [101, 43, 38]');
 
+// arr.sort((a, b) => a - b).slice(0, 3);
+// bottom3(arr).reverse(); 
+// remember compare function for sort
 /*
 7.71 Create a function called 'topN' that takes a number (n) and an array (of at least n elements). It should return the top n elements in descending order.
 */
