@@ -672,17 +672,17 @@ The following lines should help you see if your function works correctly.
 //   return [...arr, last(arr) ]                //what to put here?
 // }
 
-const countMore = arr => {
-  if (arr[0] === arr[1] + 1) {
-    return [...arr, last(arr) + 1];
-  } else if (arr[0] === arr[1] + 2) { // takes care of both even and odd sequences
-    return [...arr, last(arr) + 2];
-  } else if (arr[0] === arr[1] + 10) {
-    return [...arr, last(arr) + 10];
-  } else if (arr[0] === arr[1] - 1) {
-    return [...arr, last(arr) - 1];
-  }
-}
+// const countMore = arr => {
+//   if (arr[0] === arr[1] + 1) {
+//     return [...arr, last(arr) + 1];
+//   } else if (arr[0] === arr[1] + 2) { // takes care of both even and odd sequences
+//     return [...arr, last(arr) + 2];
+//   } else if (arr[0] === arr[1] + 10) {
+//     return [...arr, last(arr) + 10];
+//   } else if (arr[0] === arr[1] - 1) {
+//     return [...arr, last(arr) - 1];
+//   }
+// }
 
 console.log('-- countMore tests');
 console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');//
