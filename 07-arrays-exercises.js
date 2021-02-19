@@ -644,9 +644,11 @@ console.log(appendHead(['Well', 'Hello', 'there']), "=== ['Well', 'Hello', 'ther
 7.83 Create a function called 'swapEnds' that takes an array and returns a new array with the first and last elements swapped.
 Tip: Try using our head(), last(), and inner() functions to help.
 */
-const swapEnds = arr => {
-  
-}
+const swapEnds = arr => [last(arr), ...inner(arr), head(arr)];
+
+console.log('--- swapEnds');
+console.log(swapEnds(['Ty', 'is', 'incredible']), "=== ['incredible', 'is', 'Ty']");
+console.log(swapEnds(['backwards', 'sentence', 'was', 'This']), "=== ['This', 'sentence', 'was', 'backwards']");
 
 /*
 7.84 Create a function called 'countUp' that takes an array of numbers counting up and returns a new array with the next number added to the end.
@@ -656,24 +658,38 @@ The following lines should help you see if your function works correctly.
 Tip: Try using our last() function to help.
 */
 
-
-// console.log('-- countUp tests');
-// console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
-// console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
+const countUp = arr => [...arr, last(arr) + 1];
+console.log('-- countUp tests');
+console.log(countUp([1, 2, 3]), '=== [1, 2, 3, 4]');
+console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
 
 /*
 7.841 Create a function called 'countMore' that takes an array of numbers in a sequence (with a constant interval) and returns a new array with the next number in the sequence added to the end.
 
 The following lines should help you see if your function works correctly.
 */
+// const countMore = arr => {
+//   return [...arr, last(arr) ]                //what to put here?
+// }
 
+const countMore = arr => {
+  if (arr[0] === arr[1] + 1) {
+    return [...arr, last(arr) + 1];
+  } else if (arr[0] === arr[1] + 2) { // takes care of both even and odd sequences
+    return [...arr, last(arr) + 2];
+  } else if (arr[0] === arr[1] + 10) {
+    return [...arr, last(arr) + 10];
+  } else if (arr[0] === arr[1] - 1) {
+    return [...arr, last(arr) - 1];
+  }
+}
 
-// console.log('-- countMore tests');
-// console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');
-// console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');
-// console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');
-// console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
-// console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
+console.log('-- countMore tests');
+console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');//
+console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');//
+console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');//
+console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');//
+console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
 
 /*
 7.85 Create a function called 'insertAt' that takes an index, a value, and an array. It should return a new array with the given value inserted at the given index.
@@ -690,7 +706,7 @@ Tip: Try using our take() and drop() functions to help.
 // console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
 
 /*
-======================================= Complete by Fri ==============================================
+======================================= Complete by Fri @ 12pm ============================================
 
 7.86 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
 */
