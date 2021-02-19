@@ -513,11 +513,6 @@ console.log(middleN(3, [1, 2, 3, 4, 5]), '=== [2, 3, 4]');
 console.log(middleN(1, [1, 2, 3, 4, 5]), '=== [3]');
 console.log(middleN(1, [1, 2, 3, 4, 5, 6]), '=== [4]');
 
-// ============================================ New exercises =============================================
-
-
-
-
 // Practice using the sort() method
 
 /*
@@ -668,27 +663,29 @@ console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
 
 The following lines should help you see if your function works correctly.
 */
-// const countMore = arr => {
-//   return [...arr, last(arr) ]                //what to put here?
-// }
 
-// const countMore = arr => {
-//   if (arr[0] === arr[1] + 1) {
-//     return [...arr, last(arr) + 1];
-//   } else if (arr[0] === arr[1] + 2) { // takes care of both even and odd sequences
-//     return [...arr, last(arr) + 2];
-//   } else if (arr[0] === arr[1] + 10) {
-//     return [...arr, last(arr) + 10];
-//   } else if (arr[0] === arr[1] - 1) {
-//     return [...arr, last(arr) - 1];
-//   }
-// }
+const addOne = arr => [...arr, last(arr) + 1];
+const addTwo = arr => [...arr, last(arr) + 2];
+const multBy10 = arr => [...arr, last(arr) + 10];
+const minusOne = arr => [...arr, last(arr) - 1];
+
+const countMore = arr => {
+  if (arr[1] === arr[0] + 1) {
+    return addOne(arr);
+  } else if (arr[1] === arr[0] + 2) {
+    return addTwo(arr);
+  } else if (arr[1] === arr[0] + 10) {
+    return multBy10(arr);
+  } else if (arr[1] === arr[0] - 1) {
+    return minusOne(arr);
+  }
+}
 
 console.log('-- countMore tests');
-console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]');//
-console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]');//
-console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]');//
-console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');//
+console.log(countMore([1, 2, 3]), '=== [1, 2, 3, 4]'); //
+console.log(countMore([2, 4, 6]), '=== [2, 4, 6, 8]'); //
+console.log(countMore([1, 3, 5, 7]), '=== [1, 3, 5, 7, 9]'); //
+console.log(countMore([10, 20, 30, 40, 50]), '=== [10, 20, 30, 40, 50, 60]');
 console.log(countMore([-1, -2, -3]), '=== [-1, -2, -3, -4]');
 
 /*
@@ -698,15 +695,31 @@ The following lines should help you see if your function works correctly.
 
 Tip: Try using our take() and drop() functions to help.
 */
+const insertAt = (index, val, arr) => [...take(index, arr), val, ...drop(index, arr)];
 
-
-// console.log('-- insertAt tests');
-// console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
-// console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
-// console.log(insertAt(2, 'c', ['a', 'b', 'd']), '=== [a, b, c, d]');
+console.log('-- insertAt tests');
+console.log(insertAt(3, 4, [1, 2, 3, 5]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(4, 5, [1, 2, 3, 4]), '=== [1, 2, 3, 4, 5]');
+console.log(insertAt(2, 'c', ['a', 'b', 'd']), "=== ['a', 'b', 'c', 'd']");
 
 /*
 ======================================= Complete by Fri @ 12pm ============================================
 
 7.86 Create a function called 'addToShoppingList' that takes a shopping list (array of strings) and an item (string). It should return a shopping list with the new item added to it. If the item is already in the shopping list, return the shopping list unchanged.
 */
+// const addToShoppingList = (arr, str) => {
+//   if (arr.includes(str)) {
+//     return arr;
+//   } else {
+//     return [...arr, str];
+//   }
+// }
+
+const addToShoppingList = (arr, str) => arr.includes(str) ? arr : [...arr, str];
+
+console.log('--- addToShoppingList');
+console.log(addToShoppingList(['cheese', 'bananas'], 'grapes'), "=== ['cheese', 'bananas', 'grapes']");
+console.log(addToShoppingList(['cheese', 'bananas'], 'bananas'), "=== ['cheese', 'bananas']");
+console.log(addToShoppingList([], 'almond milk'), "=== ['almond milk']");
+console.log(addToShoppingList(['eggs', 'grapes', 'hummus'], 'tuna'), "=== ['eggs', 'grapes', 'hummus', 'tuna']");
+console.log(addToShoppingList(['cherries', 'pizza', 'butter'], 'butter'), "=== ['cherries', 'pizza', 'butter']");
