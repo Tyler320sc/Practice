@@ -754,33 +754,70 @@ console.log(!anyNegative([1, 2, 3, 4, 5, 7]));
 /*
 8.12 Create a function called 'anyZs' that takes an array of words (strings) and returns true if the letter "z" is found in any of the words, otherwise false.
 */
-const anyZs = arr => arr.some(x => x ); // come back and finish tomorrow
+const anyZs = arr => arr.some(x => x.includes('Z') || x.includes('z'));
 
 console.log('--- anyZs');
 console.log(anyZs(['Zebulon']));
+console.log(anyZs(['x', 'y', 'z']));
+console.log(anyZs(['a', 'bz']));
+console.log(!anyZs(['Hello']));
+console.log(!anyZs(['x']));
+
 /*
 8.13 Create a function called 'overTheLimit' that takes a limit (number) and an array of account balances (numbers). It should return true if any of the account balances is greater than the given limit, otherwise false.
 */
+const overTheLimit = (limitNum, arrNum) => arrNum.some(x => x > limitNum);
 
+console.log('--- overTheLimit');
+console.log(overTheLimit(23, [22, 1, 24]));
+console.log(!overTheLimit(230, [22, 1, 24]));
+console.log(overTheLimit(28, [22, 1, 24, 28.5]));
+console.log(!overTheLimit(23, [22, 1, 21]));
 
 // Practice using the every() method
 
 /*
 8.2 Create a function called 'irishGroup' that takes an array of surnames (strings) and returns true if they all begin with "Mc", otherwise false.
 */
+const irishGroup = arr => arr.every(a => a.startsWith('Mc'));
 
+console.log('--- irishGroup');
+console.log(irishGroup(['Mclovin']));
+console.log(irishGroup(['McTim']));
+console.log(!irishGroup(["O'Carroll"]));
+console.log(!irishGroup(['Cannon', 'McGyver', 'McChicken']));
 
 /*
 8.21 Create a function called 'allWhole' that takes an array of numbers and returns true if they are all whole numbers, otherwise false. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
 */
+const allWhole = arr => arr.every(b => b > -1 && b % 1 === 0);
 
+console.log('--- allWhole');
+console.log(allWhole([0, 2, 3, 4, 5]));
+console.log(!allWhole([8, 18, 3, -1]));
+console.log(!allWhole([1, 11, 3.25]));
 
 /*
+======================================== Finish by 11am Monday ============================================
+
 8.22 Create a function called 'britishGang' that takes an array of surnames (strings) and returns true if they are all likely British. A surname that is likely British starts with "Mac" or "Mc", or is any of the top 10 British surnames: Smith, Jones, Williams, Taylor, Davies, Brown, Wilson, Evans, Thomas, Johson.
 
 Tip: Consider making a helper function 'isBritish' to check if a single surname is British.
 */
+const isBritish = name => 
 
+      name.startsWith('Mac') || name.startsWith('Mc') || name === 'Smith' 
+      || name === 'Jones' || name === 'Williams' || name === 'Taylor' 
+      || name === 'Davies' || name === 'Brown' || name === 'Wilson' 
+      || name === 'Evans' || name === 'Thomas' || name === 'Johson';
+
+const britishGang = arr => arr.every(x => isBritish(x));
+
+console.log('--- britishGang');
+console.log(britishGang(['MacDonnald', 'McLovin']));
+console.log(!britishGang(['MacDonnald', 'McLovin', 'Joe']));
+console.log(britishGang(['MacDonnald', 'McLovin', 'Jones', 'Smith', 'Williams', 'Taylor']));
+console.log(!britishGang(['MacDonnald', 'McLovin', 'Jones', 'Smith', 'Williams', 'Taylor', 'Jed']));
 
 /*
 8.23 Create a function called 'eqArrays' that takes two arrays and returns true if they are equal, otherwise false. Two arrays are considered equal if they are the same length and every element is equal (in the same order).
@@ -790,12 +827,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 The following lines should help test if your function works correctly. They should print true.
 */
+const eqArrays = (arr, arr2) => {
+  if (arr.every(x, y => x === arr2.length && y === arr2)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
-
-// console.log('-- eqArrays tests');
-// console.log(eqArrays([], []));
-// console.log(eqArrays([1, 2, 3], [1, 2, 3]));
-// console.log(!eqArrays([1, 2, 3], [1, 3, 2]));
-// console.log(!eqArrays([1, 2, 3], [1, 2, 3, 4]));
-// console.log(!eqArrays([1, 2, 3, 4], [1, 2, 3]));
-// console.log(eqArrays(['Alice', 'Bob', 'Carol'], ['Alice', 'Bob', 'Carol']));
+console.log('-- eqArrays tests');
+console.log(eqArrays([], []));
+console.log(eqArrays([1, 2, 3], [1, 2, 3]));
+console.log(!eqArrays([1, 2, 3], [1, 3, 2]));
+console.log(!eqArrays([1, 2, 3], [1, 2, 3, 4]));
+console.log(!eqArrays([1, 2, 3, 4], [1, 2, 3]));
+console.log(eqArrays(['Alice', 'Bob', 'Carol'], ['Alice', 'Bob', 'Carol']));
