@@ -664,21 +664,11 @@ console.log(countUp([25, 26, 27, 28, 29]), '=== [25, 26, 27, 28, 29, 30]');
 The following lines should help you see if your function works correctly.
 */
 
-const addOne = arr => [...arr, last(arr) + 1];
-const addTwo = arr => [...arr, last(arr) + 2];
-const multBy10 = arr => [...arr, last(arr) + 10];
-const minusOne = arr => [...arr, last(arr) - 1];
-
 const countMore = arr => {
-  if (arr[1] === arr[0] + 1) {
-    return addOne(arr);
-  } else if (arr[1] === arr[0] + 2) {
-    return addTwo(arr);
-  } else if (arr[1] === arr[0] + 10) {
-    return multBy10(arr);
-  } else if (arr[1] === arr[0] - 1) {
-    return minusOne(arr);
-  }
+  const lastNum1 = last(arr);
+  const lastNum2 = arr[arr.length - 2];
+  const interval = lastNum1 - lastNum2;
+  return [...arr, last(arr) + interval]
 }
 
 console.log('-- countMore tests');
@@ -804,14 +794,12 @@ console.log(!allWhole([1, 11, 3.25]));
 
 Tip: Consider making a helper function 'isBritish' to check if a single surname is British.
 */
-const isBritish = name => 
 
-      name.startsWith('Mac') || name.startsWith('Mc') || name === 'Smith' 
-      || name === 'Jones' || name === 'Williams' || name === 'Taylor' 
-      || name === 'Davies' || name === 'Brown' || name === 'Wilson' 
-      || name === 'Evans' || name === 'Thomas' || name === 'Johson';
+const britishNames = ['Smith', 'Jones', 'Williams', 'Taylor', 'Davies', 'Brown', 'Wilson', "Evans", 'Thomas', 'Johson'];
 
-const britishGang = arr => arr.every(x => isBritish(x));
+const isBritish = name => name.startsWith('Mac') || name.startsWith('Mc') || britishNames.includes(name)
+
+const britishGang = arr => arr.every(isBritish);
 
 console.log('--- britishGang');
 console.log(britishGang(['MacDonnald', 'McLovin']));
@@ -827,13 +815,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const eqArrays = (arr, arr2) => {
-  if (arr.every(x, y => x === arr2.length && y === arr2)) {
-    return true;
-  } else {
-    return false;
+// arr.every(callback(element[, index[, array]])[, thisArg])
+// array1.length === array2.length && array1.every((value, index) => value === array2[index])
+
+const eqArrays = (arr1, arr2) => arr1.length === arr2.length && arr1.every((_, y) => {
+  if (Array.isArray(arr1[y]) && Array.isArray(arr2[y])) {
+    return eqArrays(arr1[y], arr2[y]);
+  } else { 
+    return arr1[y] === arr2[y]; 
   }
-}
+} );
 
 console.log('-- eqArrays tests');
 console.log(eqArrays([], []));
@@ -842,3 +833,9 @@ console.log(!eqArrays([1, 2, 3], [1, 3, 2]));
 console.log(!eqArrays([1, 2, 3], [1, 2, 3, 4]));
 console.log(!eqArrays([1, 2, 3, 4], [1, 2, 3]));
 console.log(eqArrays(['Alice', 'Bob', 'Carol'], ['Alice', 'Bob', 'Carol']));
+console.log(eqArrays([1, 2, 3, [4, 5, 6]], [1, 2, 3, [4, 5, 6]]));
+
+// =========================================== New Exercises ==============================================
+// ========================================================================================================
+// ======================================== Complete By March 1st =========================================
+
