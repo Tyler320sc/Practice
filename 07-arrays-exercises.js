@@ -982,12 +982,47 @@ people1.forEach(x => greetLanguage(x));
 8.42 Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
 */
 
-manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);
+const manyLovers = [['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']];
 
 const lovers = (firstName, secondName) => `${firstName} loves ${secondName}`;
 
 manyLovers.forEach(loveBirds => lovers(loveBirds));
 
 
+// Practice using the filter() method
+
+/*
+8.5 Create a function called 'wholeNumbers' that takes an array of numbers and returns a new array containing only the numbers that are whole. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
+*/
+// const allWhole = arr => arr.every(b => b > -1 && b % 1 === 0);
+
+const wholeNumbers = arr => arr.filter(b => b > -1 && b % 1 === 0); // is every the culprit? Maybe it wont work because not every value is a whole number?
+
+console.log('--- wholeNumbers'); 
+console.log(eqArrays(wholeNumbers([1.5, 3, 8, 2.2], [3, 8]))); 
+/*
+8.51 Create a function called 'countNulls' that takes an array and returns how many null values are in it.
+*/
 
 
+/*
+8.52 Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. A Scottish surname is one that starts with "Mac".
+*/
+
+
+/*
+8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
+*/
+
+
+/*
+8.54 Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+
+// console.log('-- rpsPoints tests');
+// console.log(rpsPoints([ ['paper', 'rock'] ]) === 1);
+// console.log(rpsPoints([ ['paper', 'rock'], ['paper', 'paper'], ['scissors', 'rock'] ]) === 1);
+// console.log(rpsPoints([ ['paper', 'rock'], ['rock', 'scissors'], ['scissors', 'paper'] ]) === 3);
