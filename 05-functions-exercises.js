@@ -54,9 +54,8 @@ sayHelloLanguage('French');
 /*
 5.4 Create a function called 'greet' that takes a name as an argument. Call the function a few times to achieve the same goal as the following lines of code.
 */
-const greet = name => {
-  return `Hello, ${name}!`;
-}
+const greet = name => `Hello, ${name}!`;
+
 console.log(greet('Alice'));
 console.log(greet('Bob'));
 console.log(greet('Carol'));
@@ -165,17 +164,15 @@ console.log('credit card number 2222 is invalid:', isValidCreditCard(2222) === f
 5.44 Create a function called 'dollarsToCents' that takes a value in dollars and returns the corresponding value in cents.
 */
 
-const dollarsToCents = dollar => {
-  return dollar * 100;
-}
+const dollarsToCents = dollar => dollar * 100;
+
 console.log('1.25 dollars === 125 cents:', dollarsToCents(1.25) === 125);
 /*
 5.45 Create a function called 'fToC' that takes a temperature in Fahrenheit and returns the temperature in Celsius.
 */
 // To convert temperatures in degrees Fahrenheit to Celsius, subtract 32 and multiply by . 5556 (or 5/9).
-const fToC = tempInFahrenheit => {
-  return (tempInFahrenheit - 32) * 5/9;
-}
+const fToC = tempInFahrenheit => (tempInFahrenheit - 32) * 5/9;
+
 console.log('28 degrees Fahrenheit === -2.22 degrees Celsius:', fToC(28) === -2.2222222222222223);
 console.log('40 degrees Fahrenheit === 4.45 degrees Celsius:', fToC(40) === 4.444444444444445);
 /*
@@ -183,9 +180,8 @@ console.log('40 degrees Fahrenheit === 4.45 degrees Celsius:', fToC(40) === 4.44
 */
 // convert celsius to fahrenheit (0°C × 9/5) + 32 = 32°F :) DUH!!!
 
-const cToF = tempInCelsius => {
-  return tempInCelsius * 9/5 + 32;
-}
+const cToF = tempInCelsius => tempInCelsius * 9/5 + 32;
+
 console.log('-2.22 degrees Celsius === 28 degrees Fahrenheit:', cToF(-2.2222222222222223) === 28);
 console.log('4.45 degrees Celsius === 40 degrees Fahrenheit:', cToF(4.444444444444445) === 40);
 // Practice calling a function with multiple arguments
@@ -287,17 +283,24 @@ console.log('bool !== true:', bonusTime(3, false) === 3);
 5.65 Create a function called 'rps' for playing the game Rock, Paper, Scissors. It should take two arguments, which should each be either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, return 1. If the first hand loses, return -1. In the case of a draw, return 0.
 Write some lines of code to test if your function works correctly.
 */
-const rps = (firstHand, secondHand) => {
-  if (firstHand === 'paper' && secondHand === 'scissors') {
+const rps = (hand1, hand2) => {
+  if (hand1 === 'scissors' && hand2 === 'paper') {
+    return 1;
+  } else if (hand1 === 'scissors' && hand2 === 'rock') {
     return -1;
-  } else if (firstHand === 'paper' && secondHand === 'rock') {
+  } else if (hand1 === 'paper' && hand2 === 'scissors') {
+    return -1;
+  } else if (hand1 === 'paper' && hand2 === 'rock') {
     return 1;
-  } else if (firstHand === 'rock' && secondHand === 'scissors') {
+  } else if (hand1 === 'rock' && hand2 === 'scissors') {
     return 1;
-  } else {
+  } else if (hand1 === 'rock' && hand2 === 'paper') {
+    return -1;
+  } else if (hand1 === hand2) {
     return 0;
   }
 }
+console.log('--- rps');
 console.log('paper looses to scissors:', rps('paper', 'scissors') === -1);
 console.log('paper beats rock:', rps('paper', 'rock') === 1);
 console.log('rock beats scissors:', rps('rock', 'scissors') === 1);

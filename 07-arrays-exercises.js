@@ -839,3 +839,155 @@ console.log(eqArrays([1, 2, 3, [4, 5, 6]], [1, 2, 3, [4, 5, 6]]));
 // ========================================================================================================
 // ======================================== Complete By March 1st =========================================
 
+
+// Practice using the map() method
+
+/*
+8.3 Create a function called 'convertMoney' to convert an array of values in dollars to an array of values in cents.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+const dollarsToCents = dollar => dollar * 100;
+
+const convertMoney = arr => arr.map(dollarsToCents);
+
+console.log('-- convertMoney tests');
+console.log(eqArrays(convertMoney([2, 3.5, 10]), [200, 350, 1000]));
+console.log(eqArrays(convertMoney([0, 0.25, 99.99]), [0, 25, 9999]));
+
+/*
+8.31 Create a function called 'convertTemperatures' that takes an array of temperatures (numbers) and either 'FtoC' or 'CtoF', and returns an array of the converted temperatures.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+const fToC = tempInFahrenheit => (tempInFahrenheit - 32) * 5/9;
+
+const cToF = tempInCelsius => tempInCelsius * 9/5 + 32; 
+
+const convertTemperatures = (arr, func) => func === 'FtoC' ? arr.map(fToC) : arr.map(cToF);
+
+console.log('-- convertTemperatures tests');
+console.log(eqArrays(convertTemperatures([32, 41], 'FtoC'), [0, 5]));
+console.log(eqArrays(convertTemperatures([0, -10], 'CtoF'), [32, 14]));
+
+/*
+8.32 Create a function called 'bonusSalaries' that takes an array of salary-bonus pairs and returns the new salaries. Each salary-bonus pair is an array with a salary and a boolean that says whether or not the salary receives a bonus. A bonus salary is the salary multiplied by 10.
+
+The following lines should help test if your function works correctly. They should print true.
+ */
+const bonusTime = (salary, bool) => bool ? salary * 10 : salary;
+
+const bonusSalaries = arr => arr.map(([num, bool]) => bonusTime(num, bool));
+
+console.log('-- bonusSalaries tests');
+console.log(eqArrays(
+  bonusSalaries([ [123, false], [123, true] ]),
+  [123, 1230]
+));
+console.log(eqArrays(
+  bonusSalaries([ [10000, true], [10000, false], [30000, true], [100000, false], [64000.99, true] ]),
+  [100000, 10000, 300000, 100000, 640009.9]
+));
+/*
+8.33 Create a function called 'rpsResults' that takes an array of "Rock, Paper, Scissors" games and returns an array of results. Each game is an array of two hands. Each hand is either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, the result is 1. If the first hand loses, the result is -1. In the case of a draw, the result is 0.
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+
+const rps = (hand1, hand2) => {
+  if (hand1 === 'scissors' && hand2 === 'paper') {
+    return 1;
+  } else if (hand1 === 'scissors' && hand2 === 'rock') {
+    return -1;
+  } else if (hand1 === 'paper' && hand2 === 'scissors') {
+    return -1;
+  } else if (hand1 === 'paper' && hand2 === 'rock') {
+    return 1;
+  } else if (hand1 === 'rock' && hand2 === 'scissors') {
+    return 1;
+  } else if (hand1 === 'rock' && hand2 === 'paper') {
+    return -1;
+  } else if (hand1 === hand2) {
+    return 0;
+  }
+}
+
+const rpsResults = (arr) => arr.map(([hand1, hand2]) => rps(hand1, hand2)); 
+
+// const rpsResults = (arr) => arr.map(x => rps(x[0], x[1]));
+
+console.log('-- rpsResults tests');
+console.log(eqArrays(
+  rpsResults([ ['rock', 'scissors'], ['paper', 'scissors'], ['scissors', 'scissors'] ]),
+  [1, -1, 0]
+));
+console.log(eqArrays(
+  rpsResults([ ['rock', 'rock'], ['paper', 'paper'], ['scissors', 'scissors'], ['scissors', 'paper'], ['paper', 'rock'] ]),
+  [0, 0, 0, 1, 1]
+));
+
+/*
+8.34 Create a function called 'makeSquares' that takes an array of numbers and returns an array of squares. A square is an array of two numbers: [length, width].
+
+The following lines should help test if your function works correctly. They should print true.
+*/
+// const rpsResults = (arr) => arr.map(([hand1, hand2]) => rps(hand1, hand2));
+
+const makeSquares = arr => arr.map(x => [x, x]);
+
+console.log('-- makeSquares tests');
+console.log(eqArrays(
+  makeSquares([1, 2, 3, 4]),
+  [ [1, 1], [2, 2], [3, 3], [4, 4] ]
+));
+console.log(eqArrays(
+  makeSquares([-1, 0, 99, 1000]),
+  [ [-1, -1], [0, 0], [99, 99], [1000, 1000] ]
+));
+
+// Practice using the forEach() method
+
+/*
+8.4 Say hello to each of the names in the following array (e.g. Hello, Alice!).
+*/
+const names1 = ['Alice', 'Bob', 'Carol', 'Dave', 'Eve'];
+
+const greet = name => `Hello, ${name}!`;
+
+const sayHello = names1.forEach(x => greet(x));
+
+/*
+8.41 Greet each person in their own language (e.g. Bonjour, Alice!).
+*/
+
+const greetLanguage = (name, language) => {
+  if (language === 'English') {
+    console.log('Hello, ' + name + '!');
+  } else if (language === 'French') {
+    console.log('Bonjour, ' + name + '!');
+  } else if (language === 'German') {
+    console.log('Guten Tag, ' + name + '!');
+  } else {
+    console.log('Unknown language');
+  }
+};
+
+const people1 = [['Alice', 'French'], ['Bob', 'English'], ['Carol', 'German']];
+
+people1.forEach(x => greetLanguage(x));
+
+/*
+8.42 Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
+*/
+
+manyLovers([['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']]);
+
+const lovers = (firstName, secondName) => `${firstName} loves ${secondName}`;
+
+manyLovers.forEach(loveBirds => lovers(loveBirds));
+
+
+
+
