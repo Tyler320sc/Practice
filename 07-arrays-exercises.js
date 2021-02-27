@@ -994,22 +994,43 @@ manyLovers.forEach(loveBirds => lovers(loveBirds));
 /*
 8.5 Create a function called 'wholeNumbers' that takes an array of numbers and returns a new array containing only the numbers that are whole. Whole numbers are the numbers starting from 0 and counting up forever: 0, 1, 2, 3, 4, 5, ... . Negative numbers and decimals (e.g. 1.5) are not whole numbers.
 */
-// const allWhole = arr => arr.every(b => b > -1 && b % 1 === 0);
 
-const wholeNumbers = arr => arr.filter(b => b > -1 && b % 1 === 0); // is every the culprit? Maybe it wont work because not every value is a whole number?
+const wholeNumbers = arr => arr.filter(b => b > -1 && b % 1 === 0); 
 
 console.log('--- wholeNumbers'); 
-console.log(eqArrays(wholeNumbers([1.5, 3, 8, 2.2], [3, 8]))); 
+console.log(eqArrays( wholeNumbers([1.5, 3, 8, 2.2]), [3, 8] ));
+console.log(eqArrays( wholeNumbers([2.8, 0.8, 9.9995, 9.7]), [] ));
 /*
 8.51 Create a function called 'countNulls' that takes an array and returns how many null values are in it.
 */
+// const isEven = num => num % 2 === 0;
+// console.log(someNumbers.filter(isEven).length); // 3
+const nullCount = x => x === null; 
 
-
+const countNulls = arr => arr.filter(nullCount).length; 
+  
+console.log('--- countNulls');
+console.log(countNulls([null]), '=== 1');
+console.log(countNulls([null, null, null]), '=== 3');
+console.log(countNulls(['Hey', 12, 23, false, null, undefined, null, null, true, 'grey', null]), '=== 4');
 /*
 8.52 Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. A Scottish surname is one that starts with "Mac".
 */
 
 
+// const mostlyScottish = arr => {
+//   if (arr.filter(x => x.startsWith('Mac') && arr === halfArrPlus1)) { // length needs its own func!
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+console.log('--- mostlyScottish');
+console.log(mostlyScottish(['MacMinn', 'MacDougal', 'O Carroll'])); //true
+console.log(mostlyScottish(['MacDweeb', 'Halifax'])); // false
+console.log(mostlyScottish(['MacSwain', 'MacMacken', 'MacFred', 'McTim', 'O Carroll'])); // true
+console.log(mostlyScottish(['MacTyler', 'O David', 'MacTeague', 'McCharlie'])); // false
 /*
 8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
 */
