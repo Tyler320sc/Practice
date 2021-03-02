@@ -975,18 +975,19 @@ const greetLanguage = (name, language) => {
 };
 
 const people1 = [['Alice', 'French'], ['Bob', 'English'], ['Carol', 'German']];
-
-people1.forEach(x => greetLanguage(x));
-
+console.log('--- greetLanguage');
+people1.forEach(([name, language]) => greetLanguage(name, language)); 
+// const rpsResults = (arr) => arr.map(([hand1, hand2]) => rps(hand1, hand2)); 
 /*
 8.42 Create a function called 'manyLovers' that takes an array of couples and prints that the first names love the second names (e.g. Alice loves Bob).
 */
+// destructuring
+const lovers = (firstName, secondName) => console.log(`${firstName} loves ${secondName}`);
 
 const manyLovers = [['Alice', 'Bob'], ['Carol', 'Dave'], ['Eve', 'Frankie']];
 
-const lovers = (firstName, secondName) => `${firstName} loves ${secondName}`;
-
-manyLovers.forEach(loveBirds => lovers(loveBirds));
+console.log('--- manyLovers');
+manyLovers.forEach(([firstName, secondName]) => lovers(firstName, secondName));
 
 
 // Practice using the filter() method
@@ -1017,14 +1018,15 @@ console.log(countNulls(['Hey', 12, 23, false, null, undefined, null, null, true,
 8.52 Create a function called 'mostlyScottish' that takes an array of surnames (strings) and returns true if more than half of them are Scottish, otherwise false. A Scottish surname is one that starts with "Mac".
 */
 
+const mostlyScottish = arr => {
+  const scottishPrefix = arr.filter(x => x.startsWith('Mac'));
 
-// const mostlyScottish = arr => {
-//   if (arr.filter(x => x.startsWith('Mac') && arr === halfArrPlus1)) { // length needs its own func!
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
+  if (scottishPrefix.length > (arr.length) / 2) { 
+    return true;
+  } else {
+    return false;
+  }
+}
 
 console.log('--- mostlyScottish');
 console.log(mostlyScottish(['MacMinn', 'MacDougal', 'O Carroll'])); //true
@@ -1034,16 +1036,59 @@ console.log(mostlyScottish(['MacTyler', 'O David', 'MacTeague', 'McCharlie'])); 
 /*
 8.53 Create a function called 'removeLetterNames' that takes a letter and an array of names (strings). It should return the names without any starting with the given letter.
 */
+const removeLetterNames = (letter, arr) => arr.filter(a => !a.startsWith(letter));
 
-
+console.log('--- removeLetterNames');
+console.log(eqArrays (removeLetterNames('T', ['Tyler', 'Taylor', 'Tim']), [] ));
+console.log(eqArrays (removeLetterNames('Z', ['Zane', 'Zoey', 'Xann', 'Chii']), ['Xann', 'Chii'] ));
+console.log(eqArrays (removeLetterNames('M', ['Tasha, Oscar', 'Chad', 'John', 'Matthew']), ['Tasha, Oscar', 'Chad', 'John'] ));
 /*
 8.54 Create a function called 'rpsPoints' that takes an array of rock-paper-scissors games and returns the number of games where the first player won.
 
 The following lines should help test if your function works correctly. They should print true.
 */
+const rpsPoints = arr => arr.filter(([hand1, hand2]) => {
+  if (eqArrays(rpsResults(hand1, hand2)) === [1, -1]) {
+    return 1;
+  } else if (eqArrays(rpsResults(hand1, hand2)) === [1, 0]) {
+    return 1;
+  } else {
+    return false;
+  }
+});
+
+// const rpsPoints = arr => {
+//   if ()
+// }
 
 
-// console.log('-- rpsPoints tests');
-// console.log(rpsPoints([ ['paper', 'rock'] ]) === 1);
-// console.log(rpsPoints([ ['paper', 'rock'], ['paper', 'paper'], ['scissors', 'rock'] ]) === 1);
-// console.log(rpsPoints([ ['paper', 'rock'], ['rock', 'scissors'], ['scissors', 'paper'] ]) === 3);
+console.log('-- rpsPoints tests');
+console.log(rpsPoints([ ['paper', 'rock'] ]) === 1);
+console.log(rpsPoints([ ['paper', 'rock'], ['paper', 'paper'], ['scissors', 'rock'] ]) === 1);
+console.log(rpsPoints([ ['paper', 'rock'], ['rock', 'scissors'], ['scissors', 'paper'] ]) === 3);
+
+
+// 8.33 Create a function called 'rpsResults' that takes an array of "Rock, Paper, Scissors" games and returns an array of results. Each game is an array of two hands. Each hand is either 'rock', 'paper', or 'scissors'. If the first hand beats the second hand, the result is 1. If the first hand loses, the result is -1. In the case of a draw, the result is 0.
+
+// The following lines should help test if your function works correctly. They should print true.
+// */
+
+// const rps = (hand1, hand2) => {
+//   if (hand1 === 'scissors' && hand2 === 'paper') {
+//     return 1;
+//   } else if (hand1 === 'scissors' && hand2 === 'rock') {
+//     return -1;
+//   } else if (hand1 === 'paper' && hand2 === 'scissors') {
+//     return -1;
+//   } else if (hand1 === 'paper' && hand2 === 'rock') {
+//     return 1;
+//   } else if (hand1 === 'rock' && hand2 === 'scissors') {
+//     return 1;
+//   } else if (hand1 === 'rock' && hand2 === 'paper') {
+//     return -1;
+//   } else if (hand1 === hand2) {
+//     return 0;
+//   }
+// }
+
+// const rpsResults = (arr) => arr.map(([hand1, hand2]) => rps(hand1, hand2)); 
