@@ -1164,6 +1164,16 @@ console.log(eqArrays(
 /*
 8.65 Create a function called 'totalMinutes' that takes an array of time pairs and returns the total minutes. Each time pair is two numbers: [hours, minutes].
 */
+const totalMinutes = arr => arr.reduce((acc, x) => );
+
+console.log(eqArrays(
+  totalMinutes([1055, 1155]),
+  [2210]
+));
+console.log(eqArrays(
+  totalMinutes([800, 400]),
+  [1200]
+))
 
 
 // Bonus exercises
