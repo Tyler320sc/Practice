@@ -1164,17 +1164,19 @@ console.log(eqArrays(
 /*
 8.65 Create a function called 'totalMinutes' that takes an array of time pairs and returns the total minutes. Each time pair is two numbers: [hours, minutes].
 */
-const totalMinutes = arr => arr.reduce((acc, x) => );
+const totalMinutes = timepairs => timepairs.reduce((total, timepair) => total + timepair[0] * 60 + timepair[1], 0);
 
-console.log(eqArrays(
-  totalMinutes([1055, 1155]),
-  [2210]
-));
-console.log(eqArrays(
-  totalMinutes([800, 400]),
-  [1200]
-))
+// Destructuring
+const totalMinutes = timepairs => timepairs.reduce((total, [hours, minutes]) => total + hours * 60 + minutes, 0);
 
+console.log('---totalMinutes');
+console.log(
+  totalMinutes([[9, 50]]) === 590);
+console.log(
+  totalMinutes([[8, 30]]) === 510);
+console.log(totalMinutes([ [1, 0], [0, 30] ]) === 90);
+console.log(totalMinutes([ [0, 5], [0, 10], [2, 10] ]) === 145);
+console.log(totalMinutes([ [2, 33], [3, 44] ]) === 377);
 
 // Bonus exercises
 
