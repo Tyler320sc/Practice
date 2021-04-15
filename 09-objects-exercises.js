@@ -9,7 +9,7 @@ Create a function called 'eqObjects' that takes two objects and returns true if 
 
 The following lines should help test if your function works correctly. They should print true.
 */
-
+const eqObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2) ? true : false;
 
 console.log('-- eqObjects tests');
 console.log(eqObjects(
@@ -42,13 +42,33 @@ console.log(!eqObjects(
 /*
 9.1 Create and print an object that has your name, favorite color, and favorite food.
 */
-
-
+const profileObj = {
+  name: 'Tyler',
+  favoriteColor: 'green',
+  favoriteFood: 'Mexican'
+}
+console.log(profileObj);
 /*
 9.11 Create and print an array of objects of more people's information (as above).
 */
-
-
+const arrOfProfiles = [
+  {
+    name: 'Taylor',
+  favoriteColor: 'red',
+  favoriteFood: 'Mexican'
+  },
+  {
+    name: 'Jennifer',
+    favoriteColor: 'yellow',
+    favoriteFood: 'Italian'
+  },
+  {
+    name: 'Chris',
+    favoriteColor: 'black',
+    favoriteFood: 'German'
+  }
+]
+console.log(arrOfProfiles);
 /*
 9.12 Create and print an object using the following keys and values.
 */
@@ -59,7 +79,12 @@ const value2 = 'Monitor stand';
 const key3 = 'price';
 const value3 = 57.99;
 
-
+const monitor = {
+  [key1]: value1,
+  [key2]: value2,
+  [key3]: value3
+}
+console.log(monitor);
 
 // Practice accessing values of properties in objects
 
@@ -68,7 +93,7 @@ const value3 = 57.99;
 */
 const alice = {name: 'Alice', age: 81, favoriteColor: 'red'};
 
-
+console.log(alice.age);
 
 /*
 9.21 Print the value at the following key of the following email object.
@@ -80,15 +105,14 @@ const email = {
   subject: 'Quarterly Report',
   message: 'Please meet in the meeting room at 10am today to discuss the quarterly report.'
 };
-
-
+console.log(email[key]);
 
 /*
 9.22 Create a function called 'speciesOf' that takes a pet (object with name, species, and age) and returns its species.
 
 The following lines should help test if your function works correctly. They should print true.
 */
-
+const speciesOf = ({name, species, age}) => species;
 
 console.log('-- speciesOf tests');
 console.log(speciesOf({name: 'Nanimo', species: 'bearded dragon', age: 5}) === 'bearded dragon');
@@ -100,10 +124,10 @@ console.log(speciesOf({name: 'Carl', species: 'dog', age: 2}) === 'dog');
 */
 
 
-console.log('-- greeting people');
-greetPerson({firstName: 'Dennis', lastName: 'Ritchie'});
-greetPerson({lastName: 'Thompson', firstName: 'Ken'});
-greetPerson({age: 51, lastName: 'Torvalds', firstName: 'Linus'});
+// console.log('-- greeting people');
+// greetPerson({firstName: 'Dennis', lastName: 'Ritchie'});
+// greetPerson({lastName: 'Thompson', firstName: 'Ken'});
+// greetPerson({age: 51, lastName: 'Torvalds', firstName: 'Linus'});
 
 /*
 9.24 Create a function called 'howManyCats' that takes a person (object with name, age, and cats) and returns the number of cats.
@@ -112,9 +136,9 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- howManyCats tests');
-console.log(howManyCats({name: 'Alice', age: 36, cats: ['Cinnamon', 'Nutmeg']}) === 2);
-console.log(howManyCats({name: 'Bob', age: 39, cats: ['Frank', 'Zeus', 'Markle', 'Percy']}) === 4);
+// console.log('-- howManyCats tests');
+// console.log(howManyCats({name: 'Alice', age: 36, cats: ['Cinnamon', 'Nutmeg']}) === 2);
+// console.log(howManyCats({name: 'Bob', age: 39, cats: ['Frank', 'Zeus', 'Markle', 'Percy']}) === 4);
 
 /*
 9.25 Create a function called 'enoughSun' that takes a current sunlight value (number from 0 to 10) and a plant (object with name and desired sunlight). It should return true if the amount of current sunlight is at least as high as the plant's desired sunlight.
@@ -123,11 +147,11 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- enoughSun tests');
-console.log(enoughSun(6, {name: 'blueberries', sunlight: 6}));
-console.log(enoughSun(7, {name: 'moss', sunlight: 3}));
-console.log(!enoughSun(2, {name: 'moss', sunlight: 3}));
-console.log(!enoughSun(4, {name: 'blueberries', sunlight: 6}));
+// console.log('-- enoughSun tests');
+// console.log(enoughSun(6, {name: 'blueberries', sunlight: 6}));
+// console.log(enoughSun(7, {name: 'moss', sunlight: 3}));
+// console.log(!enoughSun(2, {name: 'moss', sunlight: 3}));
+// console.log(!enoughSun(4, {name: 'blueberries', sunlight: 6}));
 
 // Practice updating objects
 
@@ -138,15 +162,15 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- resetScore tests');
-console.log(eqObjects(
-  resetScore({title: 'Tetris', highScore: 999999}),
-  {title: 'Tetris', highScore: 0}
-));
-console.log(eqObjects(
-  resetScore({title: 'Super Mario Bros.', highScore: 1441150}),
-  {title: 'Super Mario Bros.', highScore: 0}
-));
+// console.log('-- resetScore tests');
+// console.log(eqObjects(
+//   resetScore({title: 'Tetris', highScore: 999999}),
+//   {title: 'Tetris', highScore: 0}
+// ));
+// console.log(eqObjects(
+//   resetScore({title: 'Super Mario Bros.', highScore: 1441150}),
+//   {title: 'Super Mario Bros.', highScore: 0}
+// ));
 
 /*
 9.31 Create a function called 'fillDefaults' that takes a game (object with title and price) and returns the game with the following properties added to it: platform, set to 'Steam'; players, set to 1; rating, set to 'T'.
@@ -160,15 +184,15 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- setSalary tests');
-console.log(eqObjects(
-  setSalary(200000, {name: 'Alice', title: 'CEO', salary: 1000000}),
-  {name: 'Alice', title: 'CEO', salary: 200000}
-));
-console.log(eqObjects(
-  setSalary(90000, {name: 'Bob', title: 'Developer', salary: 70000}),
-  {name: 'Bob', title: 'Developer', salary: 90000}
-));
+// console.log('-- setSalary tests');
+// console.log(eqObjects(
+//   setSalary(200000, {name: 'Alice', title: 'CEO', salary: 1000000}),
+//   {name: 'Alice', title: 'CEO', salary: 200000}
+// ));
+// console.log(eqObjects(
+//   setSalary(90000, {name: 'Bob', title: 'Developer', salary: 70000}),
+//   {name: 'Bob', title: 'Developer', salary: 90000}
+// ));
 
 /*
 9.33 Create a function called 'giveBonus' that takes a person (object with name, title, and salary) and returns the person with the salary multiplied by 10.
@@ -189,13 +213,13 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- resetDate tests');
-const task1 = {date: Date.parse('08 Mar 2021 18:00:00 EST'), text: 'do laundry'};
-const newTask1 = resetDate(task1);
-console.log(newTask1.date > task1.date);
-const task2 = {date: Date.parse('09 Mar 2071 14:00:00 EST'), text: 'write exercises'};
-const newTask2 = resetDate(task2);
-console.log(newTask2.date < task2.date);
+// console.log('-- resetDate tests');
+// const task1 = {date: Date.parse('08 Mar 2021 18:00:00 EST'), text: 'do laundry'};
+// const newTask1 = resetDate(task1);
+// console.log(newTask1.date > task1.date);
+// const task2 = {date: Date.parse('09 Mar 2071 14:00:00 EST'), text: 'write exercises'};
+// const newTask2 = resetDate(task2);
+// console.log(newTask2.date < task2.date);
 
 /*
 9.36 Create a function called 'removeProp' that takes a property name (string) and an object, and returns a copy of the object with the given property set to undefined.
@@ -204,15 +228,15 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- removeProp tests');
-console.log(eqObjects(
-  removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
-  {name: 'Tim', title:  'Developer', password: undefined}
-));
-console.log(eqObjects(
-  removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
-  {name: 'Tim', title:  'Developer'}
-));
+// console.log('-- removeProp tests');
+// console.log(eqObjects(
+//   removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
+//   {name: 'Tim', title:  'Developer', password: undefined}
+// ));
+// console.log(eqObjects(
+//   removeProp('password', {name: 'Tim', password: 'hunter2', title: 'Developer'}),
+//   {name: 'Tim', title:  'Developer'}
+// ));
 
 // Practice using object methods: Object.keys(), Object.values(), Object.entries()
 
@@ -228,13 +252,13 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- validFarmAnimal tests');
-console.log(validFarmAnimal({species: 'cow', age: 3, owner: 'Alice'}));
-console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob'}));
-console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({age: 1, owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'}));
+// console.log('-- validFarmAnimal tests');
+// console.log(validFarmAnimal({species: 'cow', age: 3, owner: 'Alice'}));
+// console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob'}));
+// console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
+// console.log(!validFarmAnimal({species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
+// console.log(!validFarmAnimal({age: 1, owner: 'Bob', name: 'Betty Boo'}));
+// console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'}));
 
 /*
 9.41 Create a function called 'anyDebt' that takes an account (object with multiple bank account balances) and returns true if any of the balances is negative.
@@ -243,10 +267,10 @@ The following lines should help test if your function works correctly. They shou
 */
 
 
-console.log('-- anyDebt tests');
-console.log(anyDebt({bank1: -100, bank2: 10000}));
-console.log(anyDebt({checking: 10000, creditCard: -100}));
-console.log(!anyDebt({checking: 10000, creditCard: 100}));
+// console.log('-- anyDebt tests');
+// console.log(anyDebt({bank1: -100, bank2: 10000}));
+// console.log(anyDebt({checking: 10000, creditCard: -100}));
+// console.log(!anyDebt({checking: 10000, creditCard: 100}));
 
 /*
 9.411 Create a function called 'totalBalance' that takes an account (as before) and returns the sum of all balances.
