@@ -349,7 +349,7 @@ console.log('--makeAnimal');
 const testAnimal = makeAnimal('Tim')
 console.log(testAnimal.name === 'Tim' && 
 (testAnimal.age >= 0 && testAnimal.age <= 10)
-   && possibleSpecies.includes(testAnimal.species))
+&& possibleSpecies.includes(testAnimal.species))
 /*
 9.51 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
 
