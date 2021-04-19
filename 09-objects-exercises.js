@@ -294,7 +294,7 @@ console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob'}));
 console.log(validFarmAnimal({age: 1, species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
 console.log(!validFarmAnimal({species: 'chicken', owner: 'Bob', name: 'Betty Boo'}));
 console.log(!validFarmAnimal({age: 1, owner: 'Bob', name: 'Betty Boo'}));
-console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'}));
+console.log(!validFarmAnimal({age: 1, species: 'chicken', name: 'Betty Boo'})); 
 
 /*
 9.41 Create a function called 'anyDebt' that takes an account (object with multiple bank account balances) and returns true if any of the balances is negative.
@@ -329,19 +329,50 @@ The animal should have the properties:
 - name: the given name
 */
 
+// const makeAnimal = name => 
+
 
 /*
 9.51 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
 
 A wardrobe is an object with the properties:
-- owner: object with name (string) and age (number)
-- tops: array of colors (strings)
-- pants: array of colors (strings)
-- shorts: array of colors (strings)
-- skirts: array of colors (strings)
-- desiredNumberOfOutfits: number
+- owner: object with name (string) and age (number) ---
+- tops: array of colors (strings) ---
+- pants: array of colors (strings) ---
+- shorts: array of colors (strings) ---
+- skirts: array of colors (strings) ---
+- desiredNumberOfOutfits: number ---
 
 The first thing it should print is a greeting to the owner of the wardrobe (e.g. "Hello, Alice!").
 
 The wardrobe's contains a desired number of outfits. The actual number of outfits can be calculated by the equation: (number of tops * number of pants) + (number of tops * number of shorts) + (number of tops * number of skirts). If the actual number of outfits is at least as high as the desired number of outfits, it should print "Your desired number of outfits works!", otherwise "You need to add more clothing for your desired number of outfits to work."
 */
+const analyzeWardrobe = wardrobe => {
+  if (wardrobe.tops.length * wardrobe.pants.length + wardrobe.tops.length * wardrobe.shorts.length + wardrobe.tops.length * wardrobe.skirts.length >= wardrobe.desiredNumberOfOutfits) {
+    return `Hello, ${wardrobe.owner.name}! Your desired number of outfits works!`;
+  } else {
+    return `Hello, ${wardrobe.owner.name}! You need to add more clothing for your desired number of outfits to work.`;
+  }
+}
+
+console.log('-- analyzeWardrobe');
+console.log(
+  analyzeWardrobe({
+    owner: {name: 'Alice', age: 28},
+    tops: ['grey', 'mustard', 'purple'],
+    pants: ['yellow', 'red', 'black'],
+    shorts: ['khaki', 'black'],
+    skirts: ['white', 'blue denim', 'purple'],
+    desiredNumberOfOutfits: 5
+  })
+);
+console.log(
+  analyzeWardrobe({
+    owner: {name: 'Terry', age: 32},
+    tops: ['yellow', 'purple'],
+    pants: ['black'],
+    shorts: ['khaki', 'black'],
+    skirts: ['white', 'blue denim'],
+    desiredNumberOfOutfits: 50
+  })
+);
