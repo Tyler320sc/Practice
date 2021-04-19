@@ -9,7 +9,7 @@ Create a function called 'eqObjects' that takes two objects and returns true if 
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const eqObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2) ? true : false;
+const eqObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
 
 console.log('-- eqObjects tests');
 console.log(eqObjects(
@@ -53,7 +53,7 @@ console.log(profileObj);
 */
 const arrOfProfiles = [
   {
-    name: 'Taylor',
+  name: 'Taylor',
   favoriteColor: 'red',
   favoriteFood: 'Mexican'
   },
@@ -112,7 +112,7 @@ console.log(email[key]);
 
 The following lines should help test if your function works correctly. They should print true.
 */
-const speciesOf = ({name, species, age}) => species; 
+const speciesOf = ({species}) => species; 
 
 console.log('-- speciesOf tests');
 console.log(speciesOf({name: 'Nanimo', species: 'bearded dragon', age: 5}) === 'bearded dragon');
@@ -161,7 +161,7 @@ console.log(!enoughSun(4, {name: 'blueberries', sunlight: 6}));
 The following lines should help test if your function works correctly. They should print true.
 */ 
 // {...product, stock: product.stock + 1}
-const resetScore = game => ({...game, highScore: game.highScore = 0});
+const resetScore = game => ({...game, highScore: 0});
 
 console.log('-- resetScore tests');
 console.log(eqObjects(
@@ -329,9 +329,27 @@ The animal should have the properties:
 - name: the given name
 */
 
-// const makeAnimal = name => 
+const possibleSpecies = ['horse', 'cow', 'chicken', 'lamb'];
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 
+const makeAnimal = name => {
+  return {
+    species: possibleSpecies[getRandomInt(possibleSpecies.length - 1)],
+    age: getRandomInt(10),
+    name: name
+  }
+}
+console.log(
+  makeAnimal('Tyler')
+);
+console.log('--makeAnimal');
+const testAnimal = makeAnimal('Tim')
+console.log(testAnimal.name === 'Tim' && 
+(testAnimal.age >= 0 && testAnimal.age <= 10)
+   && possibleSpecies.includes(testAnimal.species))
 /*
 9.51 Create a function called 'analyzeWardrobe' that takes a wardrobe object and prints some information to the user.
 
@@ -354,7 +372,6 @@ const analyzeWardrobe = wardrobe => {
     return `Hello, ${wardrobe.owner.name}! You need to add more clothing for your desired number of outfits to work.`;
   }
 }
-
 console.log('-- analyzeWardrobe');
 console.log(
   analyzeWardrobe({
