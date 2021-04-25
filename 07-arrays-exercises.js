@@ -824,7 +824,7 @@ const eqArrays = (arr1, arr2) => arr1.length === arr2.length && arr1.every((_, y
   } else { 
     return arr1[y] === arr2[y]; 
   }
-} );
+});
 
 console.log('-- eqArrays tests');
 console.log(eqArrays([], []));
@@ -1164,7 +1164,7 @@ console.log(eqArrays(
 /*
 8.65 Create a function called 'totalMinutes' that takes an array of time pairs and returns the total minutes. Each time pair is two numbers: [hours, minutes].
 */
-const totalMinutes = timepairs => timepairs.reduce((total, timepair) => total + timepair[0] * 60 + timepair[1], 0);
+// const totalMinutes = timepairs => timepairs.reduce((total, timepair) => total + timepair[0] * 60 + timepair[1], 0);
 
 // Destructuring
 const totalMinutes = timepairs => timepairs.reduce((total, [hours, minutes]) => total + hours * 60 + minutes, 0);
