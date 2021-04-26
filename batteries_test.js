@@ -19,10 +19,12 @@ const {
   product,
   maximum,
   minimum,
-  // range,
+  range,
   eqObjects,
   setProp,
-  removeProp
+  removeProp,
+  buildArray,
+  // buildArray
 } = require('./batteries.js');
 
 
@@ -43,13 +45,13 @@ console.log('-- append');
 console.log(eqArrays(append('Carroll', ['Ty']), ['Ty', 'Carroll']));
 
 console.log('-- head');
-console.log(eqArrays(head([1, 2, 3]), [1]));
+console.log(head([1, 2, 3]) === 1);
 
 console.log('-- tail');
 console.log(eqArrays(tail(['null', true, false]), [true, false]));
 
 console.log('-- last');
-console.log(eqArrays(last([1, 2, 3, true]), [true]));
+console.log(last([1, 2, 3, true]) === true);
 
 console.log('-- init');
 console.log(eqArrays(init([1, 2, 3]), [1, 2]));
@@ -83,6 +85,14 @@ console.log(maximum([-1, -2, -3, -4]) === -1);
 
 console.log('---minimum');
 console.log(minimum([-1, -2, -3, -4]) === -4);
+
+console.log('-- buildArray');
+console.log(eqArrays(buildArray(5), [undefined, undefined, undefined, undefined, undefined]));
+
+console.log('-- range');
+console.log(eqArrays(range(1, 5), [1, 2, 3, 4, 5]));
+console.log(eqArrays(range(3, 4), [3, 4]));
+console.log(eqArrays(range(7, 8), [7, 8]));
 
 console.log('-- eqObjects tests');
 console.log(eqObjects(

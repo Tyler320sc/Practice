@@ -18,11 +18,11 @@ const eqArrays = (arr1, arr2) => arr1.length === arr2.length && arr1.every((_, y
 
 const append = (y, arr) => [...arr, y];
 
-const head = arr => arr.slice(0, 1);
+const head = arr => arr[0];
 
 const tail = arr => arr.slice(1);
 
-const last = arr => arr.slice(arr.length - 1);
+const last = arr => arr[arr.length - 1];
 
 const init = arr => arr.slice(0, arr.length - 1);
 
@@ -34,15 +34,9 @@ const drop = (num, arr) => arr.slice(num);
 
 const flatten = arr => arr.reduce((acc, x) => [...acc, ...x], []);
 
-// const intersperse = (sep, arr) => arr.reduce((acc, x) => {
-//   if (acc.length > 0 && acc.length < arr.length - 1 && isEven(acc.length)) {
-//     return [...acc, sep, x];
-//   } else {
-//     return [...acc, x];
-//   }
-// }, [])
+// const intersperse = (sep, arr) => arr.reduce((acc, x)=> [...acc, x, sep], []).slice(0, -1);
 
-const intersperse = (sep, arr) => arr.reduce((acc, x)=> [...acc, x, sep], []).slice(0, -1);
+const intersperse = (sep, arr) => arr.reduce((acc, x) => [...acc, sep, x], []).slice(1);
 
 // Number Arrays
 
@@ -54,7 +48,10 @@ const maximum = arr => arr.reduce((acc, x) => acc > x ? acc : x, arr[0])
 
 const minimum = arr => arr.reduce((acc, x) => acc < x ? acc : x, arr[0]);
 
-// const range = (startNum, endNum) => ;
+// Tim gave me this func. Builds arr the size of the num passed into it. And returns all el as undefined.
+const buildArray = size => [...Array(size)];
+// Return: an array of numbers counting up from start to end
+const range = (start, end) => buildArray(end - start + 1).map((_, index) => index + start);
 
 // Objects
 
@@ -63,8 +60,6 @@ const eqObjects = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
 const setProp = (str, val, obj) => ({...obj, [str]: val});
 
 const removeProp = (str, obj) => ({...obj, [str]: undefined});
-
-
 
 module.exports = {
   isEven,
@@ -85,8 +80,9 @@ module.exports = {
   product,
   maximum,
   minimum,
-  // range,
+  range,
   eqObjects,
   setProp,
-  removeProp
+  removeProp,
+  buildArray
 };
