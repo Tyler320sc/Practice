@@ -1,0 +1,92 @@
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
+}
+
+.feature {
+    max-width: 100%;
+    display: block;
+    width: 200px;
+    float: left;
+    margin-right: 15px;
+}
+
+.logo {
+  font-size: 200%;
+  padding: 50px 20px;
+  margin: 0 auto;
+  max-width: 980px;
+}
+
+.grid {
+  /* margin: 0 auto; */
+  margin-top: 70px;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-left: auto;
+  padding: 0 20px;
+  max-width: 980px;
+  display: flex;
+}
+
+nav {
+  background-color: #000;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  top: 0px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: .5em 1em;
+}
+
+nav li {
+  display: inline;
+  padding: 73px;
+ 
+}
+
+.photos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start;
+    gap: 1px;
+}
+
+.column {
+  flex: 75%;
+}
+
+.column-2 {
+  flex: 25%;
+}
+
+.photos img {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.photos li {
+  max-width: 75px;
+  max-height: 75px;
+}
